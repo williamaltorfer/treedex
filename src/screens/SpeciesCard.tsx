@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react'
 import type { Species } from '../data/species'
 import type { Catch } from '../types'
-import { LeafIcon } from '../components/LeafIcon'
+import { LeafIcon, RARITY_FILL } from '../components/LeafIcon'
 import { ReadAloudButton } from '../components/ReadAloudButton'
+import { TreeIllustration } from '../components/TreeIllustration'
+import { treeForm } from '../treeForm'
+import { LEVELS } from '../levels'
+
+const GROWTH_STAGES = [0, 1, 2, 3, 4] as const
 
 export function SpeciesCard({
   species,
@@ -57,6 +62,21 @@ export function SpeciesCard({
       </h1>
       <p className="scientific-name">{species.scientificName}</p>
       <span className={`rarity-badge rarity-${species.rarity}`}>{species.rarity}</span>
+
+      <section className="growth-section">
+        <h2>The full tree</h2>
+        <div className="tree-hero">
+          <TreeIllustration stage={4} form={treeForm(species.id)} color={RARITY_FILL[species.rarity]} size={120} />
+        </div>
+        <div className="growth-strip">
+          {GROWTH_STAGES.map((stage) => (
+            <div key={stage} className="growth-stage">
+              <TreeIllustration stage={stage} form={treeForm(species.id)} color={RARITY_FILL[species.rarity]} size={44} />
+              <span>{LEVELS[stage].name}</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section>
         <h2>Stats</h2>

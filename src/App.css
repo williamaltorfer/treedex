@@ -581,6 +581,37 @@ h2 {
   font-weight: 600;
 }
 
+/* Growth stages */
+
+.growth-section {
+  background: var(--surface-alt);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+}
+
+.tree-hero {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 0 1rem;
+}
+
+.growth-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.25rem;
+}
+
+.growth-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  font-size: 0.65rem;
+  color: var(--ink-soft);
+  text-align: center;
+  font-weight: 600;
+}
+
 pre {
   font-size: 0.7rem;
   overflow-x: auto;
