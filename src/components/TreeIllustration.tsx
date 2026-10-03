@@ -56,6 +56,10 @@ function Canopy({ form, cx, topY, r, color }: { form: TreeForm; cx: number; topY
     )
   }
 
+  if (form === 'spreading') {
+    return <ellipse cx={cx} cy={topY + rr * 0.1} rx={rr * 1.3} ry={rr * 0.8} fill={color} fillOpacity={0.85} />
+  }
+
   return <circle cx={cx} cy={topY} r={rr} fill={color} fillOpacity={0.85} />
 }
 
