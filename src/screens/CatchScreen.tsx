@@ -87,6 +87,12 @@ export function CatchScreen({
           {preview ? 'Retake photo' : 'Open camera'}
           <input type="file" accept="image/*" capture="environment" onChange={handlePhoto} hidden />
         </label>
+        {import.meta.env.DEV && (
+          <label className="camera-btn upload-btn">
+            Upload photo instead (dev only)
+            <input type="file" accept="image/*" onChange={handlePhoto} hidden />
+          </label>
+        )}
         {preview && <img className="preview" src={preview} alt="Captured tree" />}
       </section>
 
