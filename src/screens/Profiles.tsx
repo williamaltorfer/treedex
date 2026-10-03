@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import type { Profile } from '../types'
+import { newId } from '../id'
 
 const AVATARS = ['🦉', '🦊', '🐿️', '🦌', '🐦', '🦝', '🐢', '🦔']
 
@@ -26,7 +27,7 @@ export function Profiles({
   function handleAdd() {
     const trimmed = name.trim()
     if (!trimmed) return
-    onAdd({ id: crypto.randomUUID(), name: trimmed, avatar })
+    onAdd({ id: newId(), name: trimmed, avatar })
     setName('')
   }
 

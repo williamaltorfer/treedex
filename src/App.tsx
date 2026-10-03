@@ -4,6 +4,7 @@ import type { Species } from './data/species'
 import type { Catch, Profile } from './types'
 import type { Organ, PlantNetResult } from './plantnet'
 import type { MatchOutcome } from './match'
+import { newId } from './id'
 
 type Candidate = { species: Species; result: PlantNetResult }
 import * as db from './db'
@@ -69,7 +70,7 @@ function App() {
   async function saveCatch(speciesId: string | null, photo: Blob, organ: Organ, outcome: MatchOutcome) {
     const catcher = activeProfileId ?? 'unknown'
     const record: Catch = {
-      id: crypto.randomUUID(),
+      id: newId(),
       capturedAt: Date.now(),
       speciesId,
       catcher,
@@ -113,7 +114,7 @@ function App() {
   function handleQueueOffline(photo: Blob, organ: Organ) {
     showPhoto(photo)
     const record: Catch = {
-      id: crypto.randomUUID(),
+      id: newId(),
       capturedAt: Date.now(),
       speciesId: null,
       catcher: activeProfileId ?? 'unknown',
@@ -132,7 +133,7 @@ function App() {
   function handleCloseCallPick(species: Species, candidates: Candidate[], photo: Blob, organ: Organ) {
     const isFirstCatch = !catches.some((c) => c.speciesId === species.id)
     const record: Catch = {
-      id: crypto.randomUUID(),
+      id: newId(),
       capturedAt: Date.now(),
       speciesId: species.id,
       catcher: activeProfileId ?? 'unknown',
