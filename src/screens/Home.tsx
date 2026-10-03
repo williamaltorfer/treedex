@@ -1,6 +1,7 @@
 import type { Species } from '../data/species'
 import type { Catch, Profile } from '../types'
-import { totalPoints } from '../badges'
+import { computeBadges, mostRecentBadge, totalPoints } from '../badges'
+import { levelProgress } from '../levels'
 import { weeklyQuest } from '../quests'
 
 export function Home({
@@ -27,7 +28,10 @@ export function Home({
   onImport: (file: File) => void
 }) {
   const caughtCount = new Set(catches.filter((c) => c.speciesId).map((c) => c.speciesId)).size
+  const dexPct = catalog.length > 0 ? Math.round((caughtCount / catalog.length) * 100) : 0
   const points = totalPoints(activeProfileCatches, catalog)
+  const progress = levelProgress(points)
+  const recentBadge = mostRecentBadge(computeBadges(activeProfileCatches, catalog))
 
   return (
     <main>
@@ -38,10 +42,46 @@ export function Home({
       </div>
 
       <h1>TreeDex</h1>
-      <p className="dex-progress">
-        {caughtCount} of {catalog.length} Chicago trees caught
-        {activeProfile ? ` · ${points} pts` : ''}
-      </p>
+
+      <section className="level-card">
+        <div className="level-top">
+          <span className="level-emoji">{progress.level.emoji}</span>
+          <div>
+            <div className="level-name">{progress.level.name}</div>
+            <div className="level-points">{points} XP</div>
+          </div>
+        </div>
+        <div className="progress-track">
+          <div className="progress-fill" style={{ width: `${progress.progressPct}%` }} />
+        </div>
+        <div className="level-next">
+          {progress.next
+            ? `${progress.pointsToNext! - progress.pointsIntoLevel} XP to ${progress.next.name} ${progress.next.emoji}`
+            : 'Max level reached!'}
+        </div>
+      </section>
+
+      <section className="dex-stat-card">
+        <div className="dex-stat-row">
+          <span>
+            {caughtCount} of {catalog.length} Chicago trees caught
+          </span>
+          <span className="dex-stat-pct">{dexPct}%</span>
+        </div>
+        <div className="progress-track">
+          <div className="progress-fill dex-fill" style={{ width: `${dexPct}%` }} />
+        </div>
+      </section>
+
+      {recentBadge && (
+        <button className="recent-badge" onClick={onBadges}>
+          <span className="recent-badge-icon">🏅</span>
+          <div>
+            <div className="recent-badge-label">New badge earned!</div>
+            <div className="recent-badge-name">{recentBadge.name}</div>
+          </div>
+        </button>
+      )}
 
       <p className="quest-banner">🌳 This week's quest: {weeklyQuest()}</p>
 

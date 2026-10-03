@@ -13,6 +13,9 @@ export function Badges({ badges, onBack }: { badges: Badge[]; onBack: () => void
             <span className="badge-icon">{b.earned ? '🏅' : '🔒'}</span>
             <strong>{b.name}</strong>
             <span className="badge-description">{b.description}</span>
+            {b.earned && b.earnedAt && (
+              <span className="badge-date">{new Date(b.earnedAt).toLocaleDateString()}</span>
+            )}
           </div>
         ))}
       </div>

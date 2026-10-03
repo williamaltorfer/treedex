@@ -145,10 +145,133 @@ h2 {
   box-shadow: var(--shadow-sm);
 }
 
-.dex-progress {
+/* Level card */
+
+.level-card {
+  background: linear-gradient(160deg, var(--primary-tint) 0%, var(--surface) 100%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.level-top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.level-emoji {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.level-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--primary-dark);
+}
+
+.level-points {
+  font-size: 0.8rem;
   color: var(--ink-soft);
-  margin: 0;
   font-weight: 600;
+}
+
+.progress-track {
+  width: 100%;
+  height: 0.6rem;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.progress-fill.dex-fill {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+
+.level-next {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+/* Dex progress card */
+
+.dex-stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 0.9rem 1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.dex-stat-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.dex-stat-pct {
+  color: var(--primary);
+  font-family: var(--font-display);
+}
+
+/* Recent badge callout */
+
+.recent-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  background: var(--accent-tint);
+  border: 1px solid #ecd9ae;
+  border-radius: var(--radius-md);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  box-shadow: var(--shadow-sm);
+  animation: badge-pop 0.4s ease;
+}
+
+.recent-badge-icon {
+  font-size: 1.6rem;
+}
+
+.recent-badge-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #8a6a1f;
+  font-weight: 700;
+}
+
+.recent-badge-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #6b4f1a;
+}
+
+@keyframes badge-pop {
+  from {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .quest-banner {
@@ -450,6 +573,12 @@ h2 {
 .badge-description {
   font-size: 0.75rem;
   color: var(--ink-soft);
+}
+
+.badge-date {
+  font-size: 0.7rem;
+  color: var(--primary-dark);
+  font-weight: 600;
 }
 
 pre {

@@ -6,6 +6,8 @@ export interface Badge {
   name: string
   description: string
   earned: boolean
+  /** When this badge's condition first became true, from replaying catches in order. Null until earned. */
+  earnedAt: number | null
 }
 
 function seasonOf(date: Date): 'spring' | 'summer' | 'fall' | 'winter' {
@@ -18,51 +20,79 @@ function seasonOf(date: Date): 'spring' | 'summer' | 'fall' | 'winter' {
 
 /** Badges are computed from one kid's catches — never stored, per the architecture doc. */
 export function computeBadges(catches: Catch[], catalog: Species[]): Badge[] {
-  const caughtSpeciesIds = new Set(catches.filter((c) => c.speciesId).map((c) => c.speciesId as string))
+  const bySpeciesId = new Map(catalog.map((s) => [s.id, s]))
+  const oakIds = new Set(catalog.filter((s) => s.genus === 'Quercus').map((s) => s.id))
+  const allShapesCount = new Set(catalog.map((s) => s.leafShape)).size
 
-  const oakIds = catalog.filter((s) => s.genus === 'Quercus').map((s) => s.id)
-  const oakCount = oakIds.filter((id) => caughtSpeciesIds.has(id)).length
+  const sorted = catches
+    .filter((c): c is Catch & { speciesId: string } => !!c.speciesId)
+    .sort((a, b) => a.capturedAt - b.capturedAt)
 
-  const allShapes = new Set(catalog.map((s) => s.leafShape))
-  const caughtShapes = new Set(
-    catalog.filter((s) => caughtSpeciesIds.has(s.id)).map((s) => s.leafShape),
-  )
-
+  const caughtSpecies = new Set<string>()
+  const caughtShapes = new Set<string>()
+  const caughtOaks = new Set<string>()
   const seasonsBySpecies = new Map<string, Set<string>>()
-  for (const c of catches) {
-    if (!c.speciesId) continue
+
+  let firstCatchAt: number | null = null
+  let oakHunterAt: number | null = null
+  let fourSeasonsAt: number | null = null
+  let leafShapesSetAt: number | null = null
+
+  for (const c of sorted) {
+    const species = bySpeciesId.get(c.speciesId)
+    caughtSpecies.add(c.speciesId)
+    if (firstCatchAt === null) firstCatchAt = c.capturedAt
+
+    if (oakIds.has(c.speciesId)) caughtOaks.add(c.speciesId)
+    if (oakHunterAt === null && caughtOaks.size >= 3) oakHunterAt = c.capturedAt
+
+    if (species) caughtShapes.add(species.leafShape)
+    if (leafShapesSetAt === null && allShapesCount > 0 && caughtShapes.size >= allShapesCount) {
+      leafShapesSetAt = c.capturedAt
+    }
+
     const seasons = seasonsBySpecies.get(c.speciesId) ?? new Set<string>()
     seasons.add(seasonOf(new Date(c.capturedAt)))
     seasonsBySpecies.set(c.speciesId, seasons)
+    if (fourSeasonsAt === null && seasons.size >= 4) fourSeasonsAt = c.capturedAt
   }
-  const fourSeasons = [...seasonsBySpecies.values()].some((s) => s.size >= 4)
 
   return [
     {
       id: 'first-catch',
       name: 'First Catch',
       description: 'Catch your first tree.',
-      earned: caughtSpeciesIds.size >= 1,
+      earned: firstCatchAt !== null,
+      earnedAt: firstCatchAt,
     },
     {
       id: 'oak-hunter',
       name: 'Oak Hunter',
       description: 'Catch 3 different oak species.',
-      earned: oakCount >= 3,
+      earned: oakHunterAt !== null,
+      earnedAt: oakHunterAt,
     },
     {
       id: 'four-seasons',
       name: 'Four Seasons',
       description: 'Catch the same tree in every season.',
-      earned: fourSeasons,
+      earned: fourSeasonsAt !== null,
+      earnedAt: fourSeasonsAt,
     },
     {
       id: 'leaf-shapes-set',
       name: 'Leaf Shapes Set',
       description: 'Catch a tree with every leaf shape on the list.',
-      earned: allShapes.size > 0 && caughtShapes.size >= allShapes.size,
+      earned: leafShapesSetAt !== null,
+      earnedAt: leafShapesSetAt,
     },
   ]
+}
+
+export function mostRecentBadge(badges: Badge[]): Badge | null {
+  const earned = badges.filter((b) => b.earned && b.earnedAt !== null)
+  if (earned.length === 0) return null
+  return earned.reduce((latest, b) => (b.earnedAt! > latest.earnedAt! ? b : latest))
 }
 
 const RARITY_POINTS: Record<Species['rarity'], number> = {
