@@ -25,14 +25,9 @@ export function Dex({
         {catalog.map((s) => {
           const caught = caughtIds.has(s.id)
           return (
-            <button
-              key={s.id}
-              className="dex-cell"
-              disabled={!caught}
-              onClick={() => caught && onSelect(s)}
-            >
+            <button key={s.id} className="dex-cell" onClick={() => onSelect(s)}>
               <LeafIcon shape={s.leafShape} size={40} caught={caught} rarity={s.rarity} />
-              <span>{caught ? s.commonName : '???'}</span>
+              <span>{s.commonName}</span>
             </button>
           )
         })}

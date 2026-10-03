@@ -312,9 +312,9 @@ h2 {
   box-shadow: var(--shadow-sm);
 }
 
-.dex-cell:disabled {
-  opacity: 0.55;
-  box-shadow: none;
+.locked-message {
+  color: var(--ink-soft);
+  font-size: 1rem;
 }
 
 /* Species card */

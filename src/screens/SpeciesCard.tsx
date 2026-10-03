@@ -16,6 +16,7 @@ export function SpeciesCard({
   const [cardPhotoUrl, setCardPhotoUrl] = useState<string | null>(null)
   const myCatches = catches.filter((c) => c.speciesId === species.id).sort((a, b) => a.capturedAt - b.capturedAt)
   const firstCatch = myCatches[0]
+  const caught = myCatches.length > 0
 
   useEffect(() => {
     if (!firstCatch) return
@@ -23,6 +24,21 @@ export function SpeciesCard({
     setCardPhotoUrl(url)
     return () => URL.revokeObjectURL(url)
   }, [firstCatch])
+
+  if (!caught) {
+    return (
+      <main>
+        <button className="back-btn" onClick={onBack}>
+          ← Back
+        </button>
+
+        <LeafIcon shape={species.leafShape} size={64} caught={false} />
+
+        <h1>{species.commonName}</h1>
+        <p className="locked-message">Not caught yet! Find and catch this tree to unlock its card.</p>
+      </main>
+    )
+  }
 
   return (
     <main>
