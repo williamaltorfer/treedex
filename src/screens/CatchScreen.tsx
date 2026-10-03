@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import type { Organ } from '../plantnet'
 import { identify } from '../plantnet'
 import { compressImage } from '../image'
@@ -11,6 +11,11 @@ const ORGANS: { value: Organ; label: string }[] = [
   { value: 'fruit', label: 'Seed or nut' },
   { value: 'flower', label: 'Flower' },
 ]
+
+function isWinterMonth(date: Date = new Date()): boolean {
+  const month = date.getMonth()
+  return month === 11 || month === 0 || month === 1
+}
 
 export function CatchScreen({
   catalog,
@@ -28,6 +33,18 @@ export function CatchScreen({
   const [preview, setPreview] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [isOnline, setIsOnline] = useState(navigator.onLine)
+
+  useEffect(() => {
+    const goOnline = () => setIsOnline(true)
+    const goOffline = () => setIsOnline(false)
+    window.addEventListener('online', goOnline)
+    window.addEventListener('offline', goOffline)
+    return () => {
+      window.removeEventListener('online', goOnline)
+      window.removeEventListener('offline', goOffline)
+    }
+  }, [])
 
   function handlePhoto(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0]
@@ -66,6 +83,12 @@ export function CatchScreen({
         ← Back
       </button>
 
+      {isWinterMonth() && (
+        <p className="quest-banner">
+          ❄️ No leaves around? Try Bark or Seed/nut instead — lots of trees can still be identified in winter.
+        </p>
+      )}
+
       <section>
         <h2>What are you photographing?</h2>
         <div className="organ-grid">
@@ -96,8 +119,15 @@ export function CatchScreen({
         {preview && <img className="preview" src={preview} alt="Captured tree" />}
       </section>
 
+      {!isOnline && (
+        <p className="offline-banner">
+          📡 No connection right now — your photo will be saved and identified automatically once you're back
+          online.
+        </p>
+      )}
+
       <button className="identify-btn" disabled={!file || !organ || loading} onClick={handleIdentify}>
-        {loading ? 'Identifying…' : 'Identify'}
+        {loading ? 'Identifying…' : !isOnline ? 'Save for later' : 'Identify'}
       </button>
 
       {error && <p className="error">{error}</p>}

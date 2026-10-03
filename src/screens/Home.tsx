@@ -32,6 +32,7 @@ export function Home({
   const points = totalPoints(activeProfileCatches, catalog)
   const progress = levelProgress(points)
   const recentBadge = mostRecentBadge(computeBadges(activeProfileCatches, catalog))
+  const queuedCount = catches.filter((c) => c.pendingIdentification).length
 
   return (
     <main>
@@ -81,6 +82,13 @@ export function Home({
             <div className="recent-badge-name">{recentBadge.name}</div>
           </div>
         </button>
+      )}
+
+      {queuedCount > 0 && (
+        <p className="offline-banner">
+          📡 {queuedCount} {queuedCount === 1 ? 'tree is' : 'trees are'} waiting to be identified — they'll finish
+          automatically once you're back online.
+        </p>
       )}
 
       <p className="quest-banner">🌳 This week's quest: {weeklyQuest()}</p>

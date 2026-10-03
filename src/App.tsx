@@ -19,6 +19,7 @@ import { SpeciesCard } from './screens/SpeciesCard'
 import { Profiles } from './screens/Profiles'
 import { Badges } from './screens/Badges'
 import { computeBadges } from './badges'
+import { reconcilePendingCatches } from './offlineQueue'
 import './App.css'
 
 const catalog = speciesData as Species[]
@@ -47,11 +48,24 @@ function App() {
   useEffect(() => {
     void db.requestPersistentStorage()
     void refreshAll()
+    void reconcile()
+  }, [])
+
+  useEffect(() => {
+    const onOnline = () => void reconcile()
+    window.addEventListener('online', onOnline)
+    return () => window.removeEventListener('online', onOnline)
   }, [])
 
   useEffect(() => {
     if (activeProfileId) localStorage.setItem(ACTIVE_PROFILE_KEY, activeProfileId)
   }, [activeProfileId])
+
+  async function reconcile() {
+    if (!navigator.onLine) return
+    const resolved = await reconcilePendingCatches(catalog)
+    if (resolved > 0) await refreshAll()
+  }
 
   async function refreshAll() {
     const [p, c] = await Promise.all([db.getAllProfiles(), db.getAllCatches()])
@@ -186,6 +200,7 @@ function App() {
         <CloseCall
           candidates={screen.candidates}
           photoUrl={photoUrl!}
+          organ={screen.organ}
           onPick={(species) => handleCloseCallPick(species, screen.candidates, screen.photo, screen.organ)}
           onNoneMatch={() => {
             void saveCatch(null, screen.photo, screen.organ, { kind: 'mystery' }).then(() => {

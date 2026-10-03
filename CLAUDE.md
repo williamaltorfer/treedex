@@ -12,13 +12,13 @@ Personal iPhone web app: a kid photographs a tree, Pl@ntNet identifies it, and t
 
 ## Build phases (do not skip ahead)
 
-1. **Accuracy spike (current).** Camera → Pl@ntNet → raw results on screen. Gate: common trees identify correctly from leaf photos against 20-30 real neighborhood photos, or the plan changes before anything else gets built.
-2. **Catalog.** Species list + `species.json` with generated content + leaf-shape icons.
+1. **Accuracy spike.** Camera → Pl@ntNet → raw results on screen. Gate (still not formally run): common trees identify correctly from leaf photos against 20-30 real neighborhood photos. Match-score thresholds in `src/match.ts` are placeholders pending that test.
+2. **Catalog.** Species list + `species.json` with generated content + leaf-shape icons. Now 28 species, grouped into 5 regions, checked against a real neighborhood reference list.
 3. **Core loop.** Catch, reveal, close-call picker, dex grid, species card, kid profiles, IndexedDB, Export/Import backup.
-4. **Game layer.** Rarity, badges, quests, read-aloud, visual polish.
-5. **Winter mode + offline.** Bark/bud/seed flows, offline photo queue.
+4. **Game layer.** Rarity, badges, quests, read-aloud, visual polish, XP levels (Seed → Ancient Oak).
+5. **Winter mode + offline (current).** Seasonal bark/seed tip on Catch, winter-clue hints in the close-call picker when the organ is bark/fruit, and offline photo queue reconciliation (`src/offlineQueue.ts`) that re-identifies queued catches automatically once back online.
 
-Run each phase as its own session; check the result on the phone before starting the next.
+Run each phase as its own session; check the result on the phone before starting the next. Species cards also pull a real tree photo from Wikipedia's REST API at runtime (`src/wikipedia.ts`) — a deliberate, confirmed exception to the "no downloaded art" rule below, since the user is fine with the app requiring a network connection.
 
 ## Rules
 
