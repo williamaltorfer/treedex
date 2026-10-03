@@ -13,7 +13,7 @@ export default defineConfig({
       // actual reload — the default injected script only calls register()
       // with no update/reload handling.
       injectRegister: false,
-      includeAssets: ['favicon.svg'],
+      includeAssets: ['favicon.svg', 'apple-touch-icon.png'],
       manifest: {
         name: 'TreeDex',
         short_name: 'TreeDex',
@@ -21,7 +21,11 @@ export default defineConfig({
         theme_color: '#f4efe3',
         background_color: '#f4efe3',
         display: 'standalone',
-        icons: [{ src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml' }],
+        icons: [
+          { src: 'favicon.svg', sizes: 'any', type: 'image/svg+xml' },
+          { src: 'icon-192.png', sizes: '192x192', type: 'image/png' },
+          { src: 'icon-512.png', sizes: '512x512', type: 'image/png' },
+        ],
       },
       workbox: {
         // Never cache the Pl@ntNet API or the Wikipedia photo lookups — only the app shell.
