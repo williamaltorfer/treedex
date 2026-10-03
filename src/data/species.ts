@@ -9,7 +9,17 @@ export type LeafShape =
   | 'compound-palmate'
   | 'fan'
   | 'triangle-toothed'
+  | 'needle'
+  | 'narrow-lance'
   | 'unknown'
+
+/** Mirrors the regional groupings from the neighborhood tree-walk list this catalog was checked against. */
+export type Region =
+  | 'Maples'
+  | 'Mighty Oaks'
+  | 'Riverbank Corridor'
+  | 'Neighborhood Giants & Parkway Trees'
+  | 'Yard & Parkway Ornamentals'
 
 export interface Lookalike {
   id: string
@@ -24,6 +34,7 @@ export interface Species {
   family: string
   native: boolean
   rarity: Rarity
+  region: Region
   leafType: string
   leafShape: LeafShape
   fallColor: string

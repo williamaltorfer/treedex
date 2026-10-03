@@ -25,6 +25,12 @@ const PATHS: Record<LeafShape, string> = {
   // Triangle-shaped leaf with a toothed edge, like a cottonwood leaf.
   'triangle-toothed':
     'M32 8 50 44c3 6-1 12-8 12H22c-7 0-11-6-8-12L32 8z',
+  // Feathery conifer spray with short needles, like bald cypress.
+  needle:
+    'M32 4v56M32 10l-6-3M32 10l6-3M32 16l-7-3M32 16l7-3M32 22l-7-3M32 22l7-3M32 28l-7-3M32 28l7-3M32 34l-6-3M32 34l6-3M32 40l-6-3M32 40l6-3M32 46l-5-2M32 46l5-2M32 52l-4-2M32 52l4-2',
+  // Long, narrow leaf tapered at both ends, like a willow leaf.
+  'narrow-lance':
+    'M32 6c4 10 6 23 6 26s-2 16-6 26c-4-10-6-23-6-26s2-16 6-26z',
   // Plain leaf silhouette, used before a species is caught.
   unknown:
     'M32 56C18 46 8 35 8 23 8 11 18 5 32 5s24 6 24 18c0 12-10 23-24 33z',

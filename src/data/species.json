@@ -18,11 +18,20 @@
     ],
     "whoLivesHere": "Squirrels, blue jays, and deer all compete for its big acorns. Dozens of moth and butterfly caterpillars feed only on oak leaves.",
     "lookalikes": [
-      { "id": "white-oak", "howToTell": "Bur oak acorns have a shaggy fringed cap; white oak acorns have a smooth bowl-shaped cap." },
-      { "id": "northern-red-oak", "howToTell": "Bur oak leaves have rounded lobes; red oak leaves have sharp, pointed lobes." }
+      {
+        "id": "white-oak",
+        "howToTell": "Bur oak acorns have a shaggy fringed cap; white oak acorns have a smooth bowl-shaped cap."
+      },
+      {
+        "id": "northern-red-oak",
+        "howToTell": "Bur oak leaves have rounded lobes; red oak leaves have sharp, pointed lobes."
+      }
     ],
     "winterClues": "Thick, deeply furrowed gray-brown bark and stout branches that spread out horizontally like open arms.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/bur-oak/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/bur-oak/"
+    ],
+    "region": "Mighty Oaks"
   },
   {
     "id": "northern-red-oak",
@@ -43,10 +52,16 @@
     ],
     "whoLivesHere": "Acorns feed turkeys, woodpeckers, and raccoons. Caterpillars of many moths rely on its leaves.",
     "lookalikes": [
-      { "id": "bur-oak", "howToTell": "Red oak lobes end in sharp points; bur oak lobes are rounded." }
+      {
+        "id": "bur-oak",
+        "howToTell": "Red oak lobes end in sharp points; bur oak lobes are rounded."
+      }
     ],
     "winterClues": "Dark gray bark with flat-topped ridges that can look almost like shiny ski trails running up the trunk.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/northern-red-oak/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/northern-red-oak/"
+    ],
+    "region": "Mighty Oaks"
   },
   {
     "id": "white-oak",
@@ -67,10 +82,16 @@
     ],
     "whoLivesHere": "Supports more kinds of moths, butterflies, and songbirds than almost any other tree in the Midwest.",
     "lookalikes": [
-      { "id": "bur-oak", "howToTell": "White oak's acorn cap is smooth and bowl-shaped; bur oak's is shaggy and fringed." }
+      {
+        "id": "bur-oak",
+        "howToTell": "White oak's acorn cap is smooth and bowl-shaped; bur oak's is shaggy and fringed."
+      }
     ],
     "winterClues": "Light gray, flaky bark broken into rectangular blocks, and wide horizontal branches.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/white-oak/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/white-oak/"
+    ],
+    "region": "Mighty Oaks"
   },
   {
     "id": "silver-maple",
@@ -91,10 +112,16 @@
     ],
     "whoLivesHere": "Squirrels eat its winged seeds, and its early spring flowers are an important first meal for bees.",
     "lookalikes": [
-      { "id": "sugar-maple", "howToTell": "Silver maple leaves have deep, narrow notches between lobes and silvery undersides; sugar maple leaves are more evenly lobed and green underneath." }
+      {
+        "id": "sugar-maple",
+        "howToTell": "Silver maple leaves have deep, narrow notches between lobes and silvery undersides; sugar maple leaves are more evenly lobed and green underneath."
+      }
     ],
     "winterClues": "Gray bark that peels in long, shaggy strips on older trunks, with branches that often droop and curve upward at the tips.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/silver-maple/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/silver-maple/"
+    ],
+    "region": "Maples"
   },
   {
     "id": "sugar-maple",
@@ -115,10 +142,16 @@
     ],
     "whoLivesHere": "Squirrels and chipmunks eat its seeds; its dense canopy is a favorite nesting spot for songbirds.",
     "lookalikes": [
-      { "id": "silver-maple", "howToTell": "Sugar maple's lobes are more rounded with U-shaped notches; silver maple's notches cut in deep and narrow." }
+      {
+        "id": "silver-maple",
+        "howToTell": "Sugar maple's lobes are more rounded with U-shaped notches; silver maple's notches cut in deep and narrow."
+      }
     ],
     "winterClues": "Gray, furrowed bark in long vertical plates, with opposite branching (twigs grow in pairs across from each other).",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/sugar-maple/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/sugar-maple/"
+    ],
+    "region": "Maples"
   },
   {
     "id": "norway-maple",
@@ -139,11 +172,17 @@
     ],
     "whoLivesHere": "Its dense shade and heavy seed crop actually make it harder for native plants to grow underneath it.",
     "lookalikes": [
-      { "id": "sugar-maple", "howToTell": "Norway maple's leaf stem oozes milky sap when snapped; sugar maple's sap is clear." }
+      {
+        "id": "sugar-maple",
+        "howToTell": "Norway maple's leaf stem oozes milky sap when snapped; sugar maple's sap is clear."
+      }
     ],
     "winterClues": "Grayish-black bark with a fine, crisscross pattern, and buds that are noticeably plump and rounded.",
     "troubleTree": "Planted widely as a street tree, but it spreads aggressively into woods and can crowd out native trees.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/norway-maple/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/norway-maple/"
+    ],
+    "region": "Maples"
   },
   {
     "id": "honeylocust",
@@ -164,10 +203,16 @@
     ],
     "whoLivesHere": "Its long seed pods feed deer and livestock; the dappled shade is gentle enough for understory plants to thrive.",
     "lookalikes": [
-      { "id": "black-walnut", "howToTell": "Honeylocust leaflets are small and smooth-edged; black walnut leaflets are larger and slightly toothed, with a spicy smell when crushed." }
+      {
+        "id": "black-walnut",
+        "howToTell": "Honeylocust leaflets are small and smooth-edged; black walnut leaflets are larger and slightly toothed, with a spicy smell when crushed."
+      }
     ],
     "winterClues": "Dark, rough bark with long vertical ridges; thornless cultivars have smooth twigs, while wild trees show clusters of sharp thorns on the trunk.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/honey-locust/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/honey-locust/"
+    ],
+    "region": "Neighborhood Giants & Parkway Trees"
   },
   {
     "id": "eastern-cottonwood",
@@ -189,7 +234,10 @@
     "whoLivesHere": "Bald eagles and great blue herons often nest in its tall branches near rivers.",
     "lookalikes": [],
     "winterClues": "Thick, ash-gray bark with deep furrows; look for it along rivers and low, wet ground.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/eastern-cottonwood/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/eastern-cottonwood/"
+    ],
+    "region": "Riverbank Corridor"
   },
   {
     "id": "shagbark-hickory",
@@ -211,7 +259,10 @@
     "whoLivesHere": "Squirrels bury its nuts to eat later, and bats sometimes roost behind its loose, peeling bark.",
     "lookalikes": [],
     "winterClues": "Long strips of bark curl outward from the trunk, as if the tree is wearing a shaggy gray coat.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/shagbark-hickory/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/shagbark-hickory/"
+    ],
+    "region": "Neighborhood Giants & Parkway Trees"
   },
   {
     "id": "american-sycamore",
@@ -233,7 +284,10 @@
     "whoLivesHere": "Its hollow trunks often shelter owls, raccoons, and squirrels.",
     "lookalikes": [],
     "winterClues": "Patchy white, gray, and brown bark that looks almost like camouflage, easiest to spot in winter.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/sycamore/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/sycamore/"
+    ],
+    "region": "Neighborhood Giants & Parkway Trees"
   },
   {
     "id": "ginkgo",
@@ -255,7 +309,10 @@
     "whoLivesHere": "Very few local insects eat ginkgo leaves, since the tree is originally from Asia, not Chicago.",
     "lookalikes": [],
     "winterClues": "Grayish bark with shallow ridges and short, stubby side branches called spur shoots.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/ginkgo/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/ginkgo/"
+    ],
+    "region": "Neighborhood Giants & Parkway Trees"
   },
   {
     "id": "black-walnut",
@@ -276,10 +333,16 @@
     ],
     "whoLivesHere": "Squirrels bury and hoard its nuts all over the neighborhood, which is how new walnut trees often sprout.",
     "lookalikes": [
-      { "id": "honeylocust", "howToTell": "Black walnut leaflets are larger with slightly toothed edges and a spicy smell; honeylocust leaflets are smaller and smooth-edged." }
+      {
+        "id": "honeylocust",
+        "howToTell": "Black walnut leaflets are larger with slightly toothed edges and a spicy smell; honeylocust leaflets are smaller and smooth-edged."
+      }
     ],
     "winterClues": "Dark, deeply furrowed bark in a diamond pattern, and branch tips with a chambered (segmented) pith inside twigs.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/black-walnut/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/black-walnut/"
+    ],
+    "region": "Neighborhood Giants & Parkway Trees"
   },
   {
     "id": "eastern-redbud",
@@ -301,7 +364,10 @@
     "whoLivesHere": "Its early flowers are an important first source of nectar for bees each spring.",
     "lookalikes": [],
     "winterClues": "Smooth gray bark that turns reddish and scaly with age, and flattened, dark seed pods that hang on through winter.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/redbud/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/redbud/"
+    ],
+    "region": "Yard & Parkway Ornamentals"
   },
   {
     "id": "callery-pear",
@@ -324,7 +390,10 @@
     "lookalikes": [],
     "winterClues": "Smooth gray bark and a tight, symmetrical branch shape; wild offspring growing outside yards often have sharp thorns.",
     "troubleTree": "Illinois is banning the sale of Callery pear (including the 'Bradford' pear) starting January 1, 2028, because it spreads aggressively into wild areas and crowds out native plants.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/callery-pear/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/callery-pear/"
+    ],
+    "region": "Yard & Parkway Ornamentals"
   },
   {
     "id": "american-elm",
@@ -346,6 +415,354 @@
     "whoLivesHere": "Its seeds feed songbirds and squirrels in spring, and its broad canopy once shaded entire city blocks in old neighborhoods.",
     "lookalikes": [],
     "winterClues": "Gray, deeply furrowed bark and a vase-shaped silhouette — the trunk splits into wide arching branches instead of growing straight up.",
-    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/american-elm/"]
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/american-elm/"
+    ],
+    "region": "Neighborhood Giants & Parkway Trees"
+  },
+  {
+    "id": "red-maple",
+    "commonName": "Red Maple",
+    "scientificName": "Acer rubrum",
+    "genus": "Acer",
+    "family": "Sapindaceae",
+    "native": true,
+    "rarity": "common",
+    "region": "Maples",
+    "leafType": "simple",
+    "leafShape": "lobed-pointed",
+    "fallColor": "deep, fiery scarlet",
+    "size": "40-60 ft",
+    "funFacts": [
+      "It's one of the most widely spread trees in eastern North America — and the first to blaze red in fall.",
+      "Even its flowers, seeds, and new twigs are reddish, not just its fall leaves.",
+      "Its shallow roots can heave up nearby sidewalks, so it's often planted a little further back from pavement."
+    ],
+    "whoLivesHere": "Its early red flowers are one of the first spring nectar sources for bees, and its seeds feed squirrels and chipmunks.",
+    "lookalikes": [
+      {
+        "id": "sugar-maple",
+        "howToTell": "Red maple's lobes are separated by sharp V-shaped notches; sugar maple's notches are more rounded and U-shaped."
+      }
+    ],
+    "winterClues": "Smooth gray bark when young, turning dark and plated with age; reddish twigs and flower buds visible all winter.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/red-maple/"
+    ]
+  },
+  {
+    "id": "black-maple",
+    "commonName": "Black Maple",
+    "scientificName": "Acer saccharum subsp. nigrum",
+    "genus": "Acer",
+    "family": "Sapindaceae",
+    "native": true,
+    "rarity": "uncommon",
+    "region": "Maples",
+    "leafType": "simple",
+    "leafShape": "lobed-pointed",
+    "fallColor": "rich golden-yellow",
+    "size": "60-75 ft",
+    "funFacts": [
+      "It's a close cousin of sugar maple — so close that some scientists consider it the same species.",
+      "Its leaves often droop slightly at the edges, giving them a relaxed, slightly wilted look even when healthy.",
+      "Like sugar maple, its sap can be tapped to make maple syrup."
+    ],
+    "whoLivesHere": "Its dense, rounded crown shelters nesting songbirds, and its seeds feed squirrels through fall.",
+    "lookalikes": [
+      {
+        "id": "sugar-maple",
+        "howToTell": "Black maple leaves often droop at the edges and have fewer, shallower lobes than sugar maple."
+      }
+    ],
+    "winterClues": "Dark, furrowed bark similar to sugar maple, with a dense, rounded winter silhouette.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/black-maple/"
+    ]
+  },
+  {
+    "id": "japanese-maple",
+    "commonName": "Japanese Maple",
+    "scientificName": "Acer palmatum",
+    "genus": "Acer",
+    "family": "Sapindaceae",
+    "native": false,
+    "rarity": "rare",
+    "region": "Maples",
+    "leafType": "simple",
+    "leafShape": "lobed-pointed",
+    "fallColor": "crimson, purple, or bright orange",
+    "size": "15-25 ft",
+    "funFacts": [
+      "It's originally from Japan, Korea, and China, and was brought to the US as a prized ornamental yard tree.",
+      "Its leaves are deeply cut into delicate, lacy points — there are over 1,000 known varieties.",
+      "Unlike the towering street and park trees on this list, it's usually planted small and close to a house or garden path."
+    ],
+    "whoLivesHere": "It's mostly grown for looks rather than wildlife value, but its dense branching still offers cover for small birds.",
+    "lookalikes": [],
+    "winterClues": "Thin, often reddish young branches with a delicate, layered branching pattern, usually on a small, ornamental-sized tree.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/japanese-maple/"
+    ]
+  },
+  {
+    "id": "swamp-white-oak",
+    "commonName": "Swamp White Oak",
+    "scientificName": "Quercus bicolor",
+    "genus": "Quercus",
+    "family": "Fagaceae",
+    "native": true,
+    "rarity": "uncommon",
+    "region": "Mighty Oaks",
+    "leafType": "simple",
+    "leafShape": "lobed-rounded",
+    "fallColor": "orange-gold to yellow",
+    "size": "50-60 ft",
+    "funFacts": [
+      "Unlike most oaks, its leaf edges are wavy instead of deeply lobed.",
+      "Flip a leaf over — the underside is silvery-white, very different from its dark green top.",
+      "It's tough enough to handle both flooding and city street conditions, which is why parks plant it near rivers."
+    ],
+    "whoLivesHere": "Its acorns feed game birds and small mammals, and it's especially valuable along floodplains like the one at Horner Park.",
+    "lookalikes": [
+      {
+        "id": "bur-oak",
+        "howToTell": "Swamp white oak leaves have wavy edges rather than the deep rounded lobes of a bur oak."
+      }
+    ],
+    "winterClues": "Peeling, curling bark — especially noticeable on younger trees — often found growing near rivers and low ground.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/swamp-white-oak/"
+    ]
+  },
+  {
+    "id": "river-birch",
+    "commonName": "River Birch",
+    "scientificName": "Betula nigra",
+    "genus": "Betula",
+    "family": "Betulaceae",
+    "native": true,
+    "rarity": "common",
+    "region": "Riverbank Corridor",
+    "leafType": "simple",
+    "leafShape": "simple-toothed",
+    "fallColor": "buttery yellow",
+    "size": "30-40 ft",
+    "funFacts": [
+      "Its bark peels and curls in dramatic cinnamon-and-pink strips — the easiest way to spot it from far away.",
+      "It's naturally resistant to the beetle that kills most other birches, so it stays healthy in cities.",
+      "It grows fast and loves wet ground, which is why you'll find it lining river paths."
+    ],
+    "whoLivesHere": "Its curling bark gives insects a place to hide, which in turn brings in woodpeckers and nuthatches looking for a meal.",
+    "lookalikes": [],
+    "winterClues": "Salmon-pink to reddish-brown bark that peels away in curling, papery layers — unmistakable even bare in winter.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/river-birch/"
+    ]
+  },
+  {
+    "id": "black-willow",
+    "commonName": "Black Willow",
+    "scientificName": "Salix nigra",
+    "genus": "Salix",
+    "family": "Salicaceae",
+    "native": true,
+    "rarity": "uncommon",
+    "region": "Riverbank Corridor",
+    "leafType": "simple",
+    "leafShape": "narrow-lance",
+    "fallColor": "soft yellow",
+    "size": "30-60 ft",
+    "funFacts": [
+      "Its long, drooping branches hang right down over the water, like it's dangling its fingers in the river.",
+      "It's one of the fastest-growing native trees, but it only lives about 40-50 years.",
+      "Its wood is so bendy and brittle that its branches snap easily — don't climb this one!"
+    ],
+    "whoLivesHere": "Its branches shade the river for fish, and beavers and muskrats often gnaw on its bark and twigs.",
+    "lookalikes": [],
+    "winterClues": "Gray-brown bark broken into shaggy furrowed plates, with long drooping branches that often trail into the water.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/black-willow/"
+    ]
+  },
+  {
+    "id": "bald-cypress",
+    "commonName": "Bald Cypress",
+    "scientificName": "Taxodium distichum",
+    "genus": "Taxodium",
+    "family": "Cupressaceae",
+    "native": false,
+    "rarity": "rare",
+    "region": "Riverbank Corridor",
+    "leafType": "needle",
+    "leafShape": "needle",
+    "fallColor": "russet-red to copper-bronze",
+    "size": "50-70 ft",
+    "funFacts": [
+      "It's a conifer that does something almost no other conifer does — it drops all its needles every fall.",
+      "Its natural home is the swampy southern US, but it handles Chicago winters just fine when planted here.",
+      "In really wet ground, it sometimes grows odd woody knobs called 'knees' poking up around its base."
+    ],
+    "whoLivesHere": "Its soft, feathery needles and open canopy let light reach the ground below, and birds nest in its tall, straight branches.",
+    "lookalikes": [],
+    "winterClues": "A tall, straight conifer that's completely bare of needles in winter — unlike pines and spruces nearby.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/bald-cypress/"
+    ]
+  },
+  {
+    "id": "hackberry",
+    "commonName": "Hackberry",
+    "scientificName": "Celtis occidentalis",
+    "genus": "Celtis",
+    "family": "Cannabaceae",
+    "native": true,
+    "rarity": "common",
+    "region": "Neighborhood Giants & Parkway Trees",
+    "leafType": "simple",
+    "leafShape": "simple-toothed",
+    "fallColor": "light yellow",
+    "size": "40-60 ft",
+    "funFacts": [
+      "Its bark is covered in strange, warty, cork-like ridges — once you've felt it, you'll never forget it.",
+      "Its small purple berries stay on the tree all winter, which makes it a favorite snack stop for birds.",
+      "It's incredibly tough and handles tricky city conditions — salt, drought, bad soil — better than most trees."
+    ],
+    "whoLivesHere": "Its persistent winter berries feed robins, cedar waxwings, and other birds when little else is available.",
+    "lookalikes": [
+      {
+        "id": "american-elm",
+        "howToTell": "Hackberry bark is warty and corky instead of ridged like elm, and its leaves are more evenly toothed along the edge."
+      }
+    ],
+    "winterClues": "Gray bark covered in distinctive warty, cork-like ridges and bumps — easy to identify by touch alone.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/hackberry/"
+    ]
+  },
+  {
+    "id": "catalpa",
+    "commonName": "Northern Catalpa",
+    "scientificName": "Catalpa speciosa",
+    "genus": "Catalpa",
+    "family": "Bignoniaceae",
+    "native": true,
+    "rarity": "uncommon",
+    "region": "Neighborhood Giants & Parkway Trees",
+    "leafType": "simple",
+    "leafShape": "simple-heart",
+    "fallColor": "yellow-green",
+    "size": "40-60 ft",
+    "funFacts": [
+      "Its heart-shaped leaves are some of the biggest of any tree on this list — almost as big as your face.",
+      "It's nicknamed the 'cigar tree' because of its long, skinny, hanging seed pods.",
+      "In late spring it bursts into huge clusters of white, orchid-like flowers."
+    ],
+    "whoLivesHere": "Its flowers attract bees and hummingbirds, and the catalpa sphinx moth caterpillar feeds only on its leaves.",
+    "lookalikes": [],
+    "winterClues": "Thick, blunt twigs and long, skinny, cigar-shaped seed pods that often hang on well into winter.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/northern-catalpa/"
+    ]
+  },
+  {
+    "id": "kentucky-coffeetree",
+    "commonName": "Kentucky Coffeetree",
+    "scientificName": "Gymnocladus dioicus",
+    "genus": "Gymnocladus",
+    "family": "Fabaceae",
+    "native": true,
+    "rarity": "rare",
+    "region": "Neighborhood Giants & Parkway Trees",
+    "leafType": "compound",
+    "leafShape": "compound-pinnate",
+    "fallColor": "brilliant golden yellow",
+    "size": "60-75 ft",
+    "funFacts": [
+      "Its leaves are made of about 70 tiny leaflets — one of the biggest compound leaves of any tree here.",
+      "Pioneers once roasted its seeds as a coffee substitute — though the raw seeds are toxic, so don't try it yourself!",
+      "Its leaves don't even appear until late May, so in spring it looks bare long after other trees have leafed out."
+    ],
+    "whoLivesHere": "Its thick, leathery seed pods are too tough for most animals to eat, so they often sit on the ground through winter.",
+    "lookalikes": [],
+    "winterClues": "Thick, blunt, almost prehistoric-looking twigs with no small side branches, and large woody pods on the ground nearby.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/kentucky-coffeetree/"
+    ]
+  },
+  {
+    "id": "downy-hawthorn",
+    "commonName": "Downy Hawthorn",
+    "scientificName": "Crataegus mollis",
+    "genus": "Crataegus",
+    "family": "Rosaceae",
+    "native": true,
+    "rarity": "uncommon",
+    "region": "Yard & Parkway Ornamentals",
+    "leafType": "simple",
+    "leafShape": "simple-toothed",
+    "fallColor": "yellow-orange",
+    "size": "20-30 ft",
+    "funFacts": [
+      "It grows long, sharp thorns up to 2 inches — watch your fingers!",
+      "Its leaves and branches feel slightly fuzzy or 'downy' to the touch, which is how it got its name.",
+      "Its bright red, apple-like fruits called pomes stay on the tree well into fall, feeding birds."
+    ],
+    "whoLivesHere": "Its thorny branches make a safe nesting spot for small birds that predators can't easily reach.",
+    "lookalikes": [],
+    "winterClues": "Twisted, thorny branches (thorns 1-2 inches long) and small round fruits that may still cling on into winter.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/downy-hawthorn/"
+    ]
+  },
+  {
+    "id": "serviceberry",
+    "commonName": "Serviceberry",
+    "scientificName": "Amelanchier laevis",
+    "genus": "Amelanchier",
+    "family": "Rosaceae",
+    "native": true,
+    "rarity": "common",
+    "region": "Yard & Parkway Ornamentals",
+    "leafType": "simple",
+    "leafShape": "simple-toothed",
+    "fallColor": "blend of orange and red",
+    "size": "15-25 ft",
+    "funFacts": [
+      "It's also called 'Juneberry' because its sweet, blueberry-like fruit ripens in June.",
+      "It's one of the first trees to bloom in spring, covered in clouds of white flowers.",
+      "Its smooth, silvery-gray bark looks a little like beech bark."
+    ],
+    "whoLivesHere": "Its June berries are one of the first ripe fruits of the year for birds, and its early flowers feed hungry spring bees.",
+    "lookalikes": [],
+    "winterClues": "Smooth, silvery-gray bark with faint vertical streaks, on a small, multi-stemmed understory tree.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/allegheny-serviceberry/"
+    ]
+  },
+  {
+    "id": "japanese-tree-lilac",
+    "commonName": "Japanese Tree Lilac",
+    "scientificName": "Syringa reticulata",
+    "genus": "Syringa",
+    "family": "Oleaceae",
+    "native": false,
+    "rarity": "common",
+    "region": "Yard & Parkway Ornamentals",
+    "leafType": "simple",
+    "leafShape": "simple-heart",
+    "fallColor": "stays green late into fall",
+    "size": "20-30 ft",
+    "funFacts": [
+      "It's a giant version of the lilac bushes in your yard — but it grows as a real tree, not a shrub.",
+      "In June it's covered in huge, fragrant clusters of creamy white flowers, much later than other lilacs.",
+      "Its reddish-brown bark has little horizontal slits, just like a cherry tree's bark."
+    ],
+    "whoLivesHere": "Its late, nectar-rich flowers are an important early-summer stop for bees and butterflies.",
+    "lookalikes": [],
+    "winterClues": "Reddish-brown bark marked with short horizontal lines, resembling a cherry tree's trunk.",
+    "sources": [
+      "https://mortonarb.org/plant-and-protect/trees-and-plants/japanese-tree-lilac/"
+    ]
   }
 ]

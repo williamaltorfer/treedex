@@ -61,6 +61,7 @@ export function SpeciesCard({
       <section>
         <h2>Stats</h2>
         <ul className="stats-list">
+          <li>Region: {species.region}</li>
           <li>Native: {species.native ? 'Yes' : 'No — planted'}</li>
           <li>Size: {species.size}</li>
           <li>Fall color: {species.fallColor}</li>
