@@ -4,6 +4,7 @@ import type { Species } from './data/species'
 import type { Catch, Profile } from './types'
 import type { Organ, PlantNetResult } from './plantnet'
 import type { MatchOutcome } from './match'
+import { offCatalogFromResult } from './match'
 import { newId } from './id'
 
 type Candidate = { species: Species; result: PlantNetResult }
@@ -19,6 +20,7 @@ import { SpeciesCard } from './screens/SpeciesCard'
 import { Profiles } from './screens/Profiles'
 import { Badges } from './screens/Badges'
 import { Settings } from './screens/Settings'
+import { WildFind } from './screens/WildFind'
 import { computeBadges } from './badges'
 import { reconcilePendingCatches } from './offlineQueue'
 import './App.css'
@@ -32,6 +34,7 @@ type Screen =
   | { name: 'close-call'; candidates: Candidate[]; photo: Blob; organ: Organ }
   | { name: 'reveal'; species: Species; photo: Blob; isFirstCatch: boolean }
   | { name: 'mystery'; photo: Blob; genus?: string }
+  | { name: 'wild-find'; offCatalog: NonNullable<Catch['offCatalog']>; photo: Blob; mode: 'reveal' | 'view' }
   | { name: 'dex' }
   | { name: 'species'; species: Species }
   | { name: 'profiles' }
@@ -83,7 +86,13 @@ function App() {
     })
   }
 
-  async function saveCatch(speciesId: string | null, photo: Blob, organ: Organ, outcome: MatchOutcome) {
+  async function saveCatch(
+    speciesId: string | null,
+    photo: Blob,
+    organ: Organ,
+    outcome: MatchOutcome,
+    offCatalog?: Catch['offCatalog'],
+  ) {
     const catcher = activeProfileId ?? 'unknown'
     const record: Catch = {
       id: newId(),
@@ -97,10 +106,11 @@ function App() {
       candidates:
         outcome.kind === 'close-call'
           ? outcome.candidates.map((c) => c.result)
-          : outcome.kind === 'strong' || outcome.kind === 'genus-fallback'
+          : outcome.kind === 'strong' || outcome.kind === 'genus-fallback' || outcome.kind === 'off-catalog'
             ? [outcome.result]
             : [],
       confirmedBy: 'app',
+      offCatalog,
     }
     await db.addCatch(record)
     await refreshAll()
@@ -119,6 +129,11 @@ function App() {
     } else if (outcome.kind === 'genus-fallback') {
       void saveCatch(null, photo, organ, outcome).then(() => {
         setScreen({ name: 'mystery', photo, genus: outcome.genus })
+      })
+    } else if (outcome.kind === 'off-catalog') {
+      const offCatalog = offCatalogFromResult(outcome.result)
+      void saveCatch(null, photo, organ, outcome, offCatalog).then(() => {
+        setScreen({ name: 'wild-find', offCatalog, photo, mode: 'reveal' })
       })
     } else {
       void saveCatch(null, photo, organ, outcome).then(() => {
@@ -233,12 +248,24 @@ function App() {
           onDone={() => setScreen({ name: 'dex' })}
         />
       )
+    case 'wild-find':
+      return (
+        <WildFind
+          offCatalog={screen.offCatalog}
+          photo={screen.photo}
+          mode={screen.mode}
+          onClose={() => setScreen({ name: 'dex' })}
+        />
+      )
     case 'dex':
       return (
         <Dex
           catalog={catalog}
           catches={catches}
           onSelect={(species) => setScreen({ name: 'species', species })}
+          onSelectWildFind={(c) =>
+            c.offCatalog && setScreen({ name: 'wild-find', offCatalog: c.offCatalog, photo: c.photo, mode: 'view' })
+          }
           onBack={() => setScreen({ name: 'home' })}
         />
       )

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import type { Region, Species } from '../data/species'
 import type { Catch } from '../types'
 import { LeafIcon } from '../components/LeafIcon'
@@ -10,18 +11,42 @@ const REGION_ORDER: Region[] = [
   'Yard & Parkway Ornamentals',
 ]
 
+function WildFindTile({ catchRecord, onSelect }: { catchRecord: Catch; onSelect: () => void }) {
+  const [url, setUrl] = useState<string | null>(null)
+
+  useEffect(() => {
+    const objectUrl = URL.createObjectURL(catchRecord.photo)
+    setUrl(objectUrl)
+    return () => URL.revokeObjectURL(objectUrl)
+  }, [catchRecord.photo])
+
+  return (
+    <button className="dex-cell" onClick={onSelect}>
+      {url ? (
+        <img className="wild-find-thumb" src={url} alt={catchRecord.offCatalog?.commonName} />
+      ) : (
+        <LeafIcon shape="unknown" size={40} caught={false} />
+      )}
+      <span>{catchRecord.offCatalog?.commonName}</span>
+    </button>
+  )
+}
+
 export function Dex({
   catalog,
   catches,
   onSelect,
+  onSelectWildFind,
   onBack,
 }: {
   catalog: Species[]
   catches: Catch[]
   onSelect: (species: Species) => void
+  onSelectWildFind: (c: Catch) => void
   onBack: () => void
 }) {
   const caughtIds = new Set(catches.filter((c) => c.speciesId).map((c) => c.speciesId))
+  const wildFinds = catches.filter((c) => c.offCatalog)
 
   return (
     <main>
@@ -50,6 +75,17 @@ export function Dex({
           </section>
         )
       })}
+
+      {wildFinds.length > 0 && (
+        <section>
+          <h2>🌲 Wild Finds</h2>
+          <div className="dex-grid">
+            {wildFinds.map((c) => (
+              <WildFindTile key={c.id} catchRecord={c} onSelect={() => onSelectWildFind(c)} />
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   )
 }

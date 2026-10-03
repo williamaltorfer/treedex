@@ -562,9 +562,33 @@ h2 {
   box-shadow: var(--shadow-sm);
 }
 
+.wild-find-thumb {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 .locked-message {
   color: var(--ink-soft);
   font-size: 1rem;
+}
+
+.wild-find-badge {
+  align-self: flex-start;
+  background: var(--accent-tint);
+  border: 1px solid #ecd9ae;
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #6b4f1a;
+}
+
+.wild-find-note {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  font-style: italic;
 }
 
 /* Species card */

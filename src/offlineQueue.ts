@@ -1,6 +1,6 @@
 import * as db from './db'
 import { identify } from './plantnet'
-import { matchToCatalog } from './match'
+import { matchToCatalog, offCatalogFromResult } from './match'
 import type { Species } from './data/species'
 
 /**
@@ -25,11 +25,12 @@ export async function reconcilePendingCatches(catalog: Species[]): Promise<numbe
       const candidates =
         outcome.kind === 'close-call'
           ? outcome.candidates.map((cand) => cand.result)
-          : outcome.kind === 'strong' || outcome.kind === 'genus-fallback'
+          : outcome.kind === 'strong' || outcome.kind === 'genus-fallback' || outcome.kind === 'off-catalog'
             ? [outcome.result]
             : []
+      const offCatalog = outcome.kind === 'off-catalog' ? offCatalogFromResult(outcome.result) : undefined
 
-      await db.updateCatch({ ...c, speciesId, candidates, pendingIdentification: false })
+      await db.updateCatch({ ...c, speciesId, candidates, offCatalog, pendingIdentification: false })
       resolved++
     } catch {
       // Leave it queued — will retry on the next reconcile.
