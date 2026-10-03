@@ -3,6 +3,7 @@ import type { Catch, Profile } from '../types'
 import { computeBadges, mostRecentBadge, totalPoints } from '../badges'
 import { levelProgress } from '../levels'
 import { weeklyQuest } from '../quests'
+import { resetAllData } from '../db'
 
 export function Home({
   catalog,
@@ -27,6 +28,12 @@ export function Home({
   onExport: () => void
   onImport: (file: File) => void
 }) {
+  async function handleReset() {
+    if (!window.confirm('Delete all catches and profiles on this phone? This cannot be undone.')) return
+    await resetAllData()
+    window.location.reload()
+  }
+
   const caughtCount = new Set(catches.filter((c) => c.speciesId).map((c) => c.speciesId)).size
   const dexPct = catalog.length > 0 ? Math.round((caughtCount / catalog.length) * 100) : 0
   const points = totalPoints(activeProfileCatches, catalog)
@@ -123,6 +130,10 @@ export function Home({
           />
         </label>
       </section>
+
+      <button className="reset-btn danger" onClick={handleReset}>
+        Reset all data
+      </button>
     </main>
   )
 }
