@@ -1,6 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
+
 :root {
-  font-family: system-ui, sans-serif;
   color-scheme: light;
+
+  --bg: #f4efe2;
+  --surface: #ffffff;
+  --surface-alt: #faf6ea;
+  --ink: #26311f;
+  --ink-soft: #66705a;
+  --border: #e1d9c2;
+
+  --primary: #2f7a42;
+  --primary-dark: #215c31;
+  --primary-tint: #e6f0e2;
+
+  --accent: #e3a23a;
+  --accent-tint: #fdf2dd;
+
+  --rarity-common: #7e8870;
+  --rarity-uncommon: #3d7dca;
+  --rarity-rare: #9b59b6;
+  --rarity-legendary: #d4a017;
+
+  --radius-sm: 0.6rem;
+  --radius-md: 0.9rem;
+  --radius-lg: 1.4rem;
+
+  --shadow-sm: 0 1px 3px rgba(38, 49, 31, 0.08);
+  --shadow-md: 0 6px 16px rgba(38, 49, 31, 0.1);
+
+  --font-display: 'Quicksand', system-ui, sans-serif;
+  --font-body: 'Nunito', system-ui, sans-serif;
+
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
 * {
@@ -10,16 +43,39 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: #f5f3ee;
-  color: #1a1a1a;
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 10% 15%, var(--primary-tint) 0%, transparent 45%),
+    radial-gradient(circle at 90% 85%, var(--accent-tint) 0%, transparent 40%);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: var(--font-body);
 }
 
 #root {
   max-width: 480px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.25rem 1rem 2.5rem;
+}
+
+h1, h2 {
+  font-family: var(--font-display);
 }
 
 button {
   font-family: inherit;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+img {
+  max-width: 100%;
+}
+
+[hidden] {
+  display: none !important;
 }

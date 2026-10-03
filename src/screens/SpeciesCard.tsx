@@ -33,7 +33,7 @@ export function SpeciesCard({
       {cardPhotoUrl ? (
         <img className="reveal-photo" src={cardPhotoUrl} alt={species.commonName} />
       ) : (
-        <LeafIcon shape={species.leafShape} size={64} />
+        <LeafIcon shape={species.leafShape} size={64} rarity={species.rarity} />
       )}
 
       <h1>

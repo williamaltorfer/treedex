@@ -21,7 +21,7 @@ export function CloseCall({
       <div className="candidate-grid">
         {candidates.map((c) => (
           <button key={c.species.id} className="candidate-card" onClick={() => onPick(c.species)}>
-            <LeafIcon shape={c.species.leafShape} size={56} />
+            <LeafIcon shape={c.species.leafShape} size={56} rarity={c.species.rarity} />
             <strong>{c.species.commonName}</strong>
           </button>
         ))}

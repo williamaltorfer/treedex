@@ -31,7 +31,7 @@ export function Dex({
               disabled={!caught}
               onClick={() => caught && onSelect(s)}
             >
-              <LeafIcon shape={s.leafShape} size={40} caught={caught} />
+              <LeafIcon shape={s.leafShape} size={40} caught={caught} rarity={s.rarity} />
               <span>{caught ? s.commonName : '???'}</span>
             </button>
           )

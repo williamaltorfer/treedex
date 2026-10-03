@@ -29,7 +29,7 @@ export function Reveal({
         <div className={`reveal-card-inner rarity-${species.rarity}`}>
           <img className="reveal-photo" src={photoUrl} alt={species.commonName} />
           <div className="reveal-icon">
-            <LeafIcon shape={species.leafShape} size={40} />
+            <LeafIcon shape={species.leafShape} size={40} rarity={species.rarity} />
           </div>
         </div>
       </div>
