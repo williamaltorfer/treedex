@@ -1,0 +1,329 @@
+[
+  {
+    "id": "bur-oak",
+    "commonName": "Bur Oak",
+    "scientificName": "Quercus macrocarpa",
+    "genus": "Quercus",
+    "family": "Fagaceae",
+    "native": true,
+    "rarity": "legendary",
+    "leafType": "simple",
+    "leafShape": "lobed-rounded",
+    "fallColor": "yellow-brown",
+    "size": "60-80 ft",
+    "funFacts": [
+      "Its acorns wear a shaggy, fringed cap — like a tiny furry hat.",
+      "Bur oaks have thick, corky bark that helps them survive prairie fires.",
+      "Some bur oaks in the Chicago area are over 200 years old and were already big trees before Chicago was a city."
+    ],
+    "whoLivesHere": "Squirrels, blue jays, and deer all compete for its big acorns. Dozens of moth and butterfly caterpillars feed only on oak leaves.",
+    "lookalikes": [
+      { "id": "white-oak", "howToTell": "Bur oak acorns have a shaggy fringed cap; white oak acorns have a smooth bowl-shaped cap." },
+      { "id": "northern-red-oak", "howToTell": "Bur oak leaves have rounded lobes; red oak leaves have sharp, pointed lobes." }
+    ],
+    "winterClues": "Thick, deeply furrowed gray-brown bark and stout branches that spread out horizontally like open arms.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/bur-oak/"]
+  },
+  {
+    "id": "northern-red-oak",
+    "commonName": "Northern Red Oak",
+    "scientificName": "Quercus rubra",
+    "genus": "Quercus",
+    "family": "Fagaceae",
+    "native": true,
+    "rarity": "uncommon",
+    "leafType": "simple",
+    "leafShape": "lobed-pointed",
+    "fallColor": "russet to bright red",
+    "size": "60-75 ft",
+    "funFacts": [
+      "New leaves unfurl pinkish-red before turning dark green for the summer.",
+      "It's one of the faster-growing oaks, so it doesn't take as long to get big.",
+      "Its sharp-pointed leaf lobes are the easiest way to tell it apart from round-lobed oaks."
+    ],
+    "whoLivesHere": "Acorns feed turkeys, woodpeckers, and raccoons. Caterpillars of many moths rely on its leaves.",
+    "lookalikes": [
+      { "id": "bur-oak", "howToTell": "Red oak lobes end in sharp points; bur oak lobes are rounded." }
+    ],
+    "winterClues": "Dark gray bark with flat-topped ridges that can look almost like shiny ski trails running up the trunk.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/northern-red-oak/"]
+  },
+  {
+    "id": "white-oak",
+    "commonName": "White Oak",
+    "scientificName": "Quercus alba",
+    "genus": "Quercus",
+    "family": "Fagaceae",
+    "native": true,
+    "rarity": "rare",
+    "leafType": "simple",
+    "leafShape": "lobed-rounded",
+    "fallColor": "wine-red",
+    "size": "50-80 ft",
+    "funFacts": [
+      "White oak is the official state tree of Illinois.",
+      "It can live more than 200 years — some White Oaks alive today sprouted before the Civil War.",
+      "Its acorns have a smooth, bowl-shaped cap and are less bitter than most oaks'."
+    ],
+    "whoLivesHere": "Supports more kinds of moths, butterflies, and songbirds than almost any other tree in the Midwest.",
+    "lookalikes": [
+      { "id": "bur-oak", "howToTell": "White oak's acorn cap is smooth and bowl-shaped; bur oak's is shaggy and fringed." }
+    ],
+    "winterClues": "Light gray, flaky bark broken into rectangular blocks, and wide horizontal branches.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/white-oak/"]
+  },
+  {
+    "id": "silver-maple",
+    "commonName": "Silver Maple",
+    "scientificName": "Acer saccharinum",
+    "genus": "Acer",
+    "family": "Sapindaceae",
+    "native": true,
+    "rarity": "common",
+    "leafType": "simple",
+    "leafShape": "lobed-pointed",
+    "fallColor": "pale yellow",
+    "size": "50-70 ft",
+    "funFacts": [
+      "Flip a leaf over — the underside is silvery white, which is how it got its name.",
+      "It grows fast and is often found along creeks and rivers.",
+      "Its branches can snap in high wind or ice storms, so arborists prune it carefully."
+    ],
+    "whoLivesHere": "Squirrels eat its winged seeds, and its early spring flowers are an important first meal for bees.",
+    "lookalikes": [
+      { "id": "sugar-maple", "howToTell": "Silver maple leaves have deep, narrow notches between lobes and silvery undersides; sugar maple leaves are more evenly lobed and green underneath." }
+    ],
+    "winterClues": "Gray bark that peels in long, shaggy strips on older trunks, with branches that often droop and curve upward at the tips.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/silver-maple/"]
+  },
+  {
+    "id": "sugar-maple",
+    "commonName": "Sugar Maple",
+    "scientificName": "Acer saccharum",
+    "genus": "Acer",
+    "family": "Sapindaceae",
+    "native": true,
+    "rarity": "rare",
+    "leafType": "simple",
+    "leafShape": "lobed-pointed",
+    "fallColor": "yellow to burnt orange",
+    "size": "60-75 ft",
+    "funFacts": [
+      "This is the tree maple syrup comes from — its sap runs sweet in late winter.",
+      "Its five-lobed leaf is famous as the maple leaf on Canada's flag.",
+      "It's one of the showiest trees for fall color in the Chicago area."
+    ],
+    "whoLivesHere": "Squirrels and chipmunks eat its seeds; its dense canopy is a favorite nesting spot for songbirds.",
+    "lookalikes": [
+      { "id": "silver-maple", "howToTell": "Sugar maple's lobes are more rounded with U-shaped notches; silver maple's notches cut in deep and narrow." }
+    ],
+    "winterClues": "Gray, furrowed bark in long vertical plates, with opposite branching (twigs grow in pairs across from each other).",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/sugar-maple/"]
+  },
+  {
+    "id": "norway-maple",
+    "commonName": "Norway Maple",
+    "scientificName": "Acer platanoides",
+    "genus": "Acer",
+    "family": "Sapindaceae",
+    "native": false,
+    "rarity": "common",
+    "leafType": "simple",
+    "leafShape": "lobed-pointed",
+    "fallColor": "yellow",
+    "size": "40-50 ft",
+    "funFacts": [
+      "It was brought over from Europe and Asia and planted along streets everywhere.",
+      "Snap its leaf stem — milky white sap drips out, which no native maple does.",
+      "It spreads so many seeds that it crowds out native wildflowers in wooded areas."
+    ],
+    "whoLivesHere": "Its dense shade and heavy seed crop actually make it harder for native plants to grow underneath it.",
+    "lookalikes": [
+      { "id": "sugar-maple", "howToTell": "Norway maple's leaf stem oozes milky sap when snapped; sugar maple's sap is clear." }
+    ],
+    "winterClues": "Grayish-black bark with a fine, crisscross pattern, and buds that are noticeably plump and rounded.",
+    "troubleTree": "Planted widely as a street tree, but it spreads aggressively into woods and can crowd out native trees.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/norway-maple/"]
+  },
+  {
+    "id": "honeylocust",
+    "commonName": "Honeylocust",
+    "scientificName": "Gleditsia triacanthos",
+    "genus": "Gleditsia",
+    "family": "Fabaceae",
+    "native": true,
+    "rarity": "common",
+    "leafType": "compound",
+    "leafShape": "compound-pinnate",
+    "fallColor": "yellowish-gold",
+    "size": "30-70 ft",
+    "funFacts": [
+      "Its leaves are made of 15-30 tiny leaflets, so one 'leaf' looks like a feather.",
+      "Wild honeylocusts grow long, sharp thorns, but most planted in cities are a thornless variety.",
+      "Its light, lacy shade lets grass grow even underneath the tree."
+    ],
+    "whoLivesHere": "Its long seed pods feed deer and livestock; the dappled shade is gentle enough for understory plants to thrive.",
+    "lookalikes": [
+      { "id": "black-walnut", "howToTell": "Honeylocust leaflets are small and smooth-edged; black walnut leaflets are larger and slightly toothed, with a spicy smell when crushed." }
+    ],
+    "winterClues": "Dark, rough bark with long vertical ridges; thornless cultivars have smooth twigs, while wild trees show clusters of sharp thorns on the trunk.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/honey-locust/"]
+  },
+  {
+    "id": "eastern-cottonwood",
+    "commonName": "Eastern Cottonwood",
+    "scientificName": "Populus deltoides",
+    "genus": "Populus",
+    "family": "Salicaceae",
+    "native": true,
+    "rarity": "common",
+    "leafType": "simple",
+    "leafShape": "triangle-toothed",
+    "fallColor": "yellow",
+    "size": "75-100 ft",
+    "funFacts": [
+      "In early summer, its seeds drift through the air on little tufts of cotton, like a snow flurry.",
+      "It's one of the fastest-growing trees in North America.",
+      "Its triangle-shaped leaves have a flat leaf stem that makes them flutter noisily in the wind."
+    ],
+    "whoLivesHere": "Bald eagles and great blue herons often nest in its tall branches near rivers.",
+    "lookalikes": [],
+    "winterClues": "Thick, ash-gray bark with deep furrows; look for it along rivers and low, wet ground.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/eastern-cottonwood/"]
+  },
+  {
+    "id": "shagbark-hickory",
+    "commonName": "Shagbark Hickory",
+    "scientificName": "Carya ovata",
+    "genus": "Carya",
+    "family": "Juglandaceae",
+    "native": true,
+    "rarity": "rare",
+    "leafType": "compound",
+    "leafShape": "compound-pinnate",
+    "fallColor": "golden yellow",
+    "size": "60-80 ft",
+    "funFacts": [
+      "Its bark peels away in long, curling plates, making the whole trunk look shaggy.",
+      "It grows tasty nuts inside a thick green husk that splits open in fall.",
+      "It's a slow grower, but can live 200 years or more."
+    ],
+    "whoLivesHere": "Squirrels bury its nuts to eat later, and bats sometimes roost behind its loose, peeling bark.",
+    "lookalikes": [],
+    "winterClues": "Long strips of bark curl outward from the trunk, as if the tree is wearing a shaggy gray coat.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/shagbark-hickory/"]
+  },
+  {
+    "id": "american-sycamore",
+    "commonName": "American Sycamore",
+    "scientificName": "Platanus occidentalis",
+    "genus": "Platanus",
+    "family": "Platanaceae",
+    "native": true,
+    "rarity": "uncommon",
+    "leafType": "simple",
+    "leafShape": "lobed-pointed",
+    "fallColor": "yellow to brown",
+    "size": "75-100 ft",
+    "funFacts": [
+      "Its bark peels off in patches, revealing bright white or pale green bark underneath.",
+      "It's one of the biggest native trees in the Chicago region — some grow over 100 feet tall.",
+      "Its round, dangling seed balls stay on the tree through winter."
+    ],
+    "whoLivesHere": "Its hollow trunks often shelter owls, raccoons, and squirrels.",
+    "lookalikes": [],
+    "winterClues": "Patchy white, gray, and brown bark that looks almost like camouflage, easiest to spot in winter.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/sycamore/"]
+  },
+  {
+    "id": "ginkgo",
+    "commonName": "Ginkgo",
+    "scientificName": "Ginkgo biloba",
+    "genus": "Ginkgo",
+    "family": "Ginkgoaceae",
+    "native": false,
+    "rarity": "uncommon",
+    "leafType": "simple",
+    "leafShape": "fan",
+    "fallColor": "vivid gold",
+    "size": "50-80 ft",
+    "funFacts": [
+      "Ginkgo trees have barely changed in over 200 million years — dinosaurs saw leaves just like these.",
+      "Its fan-shaped leaves all turn gold at once and can drop in a single day.",
+      "Only male ginkgos are usually planted in cities, because female trees drop smelly fruit."
+    ],
+    "whoLivesHere": "Very few local insects eat ginkgo leaves, since the tree is originally from Asia, not Chicago.",
+    "lookalikes": [],
+    "winterClues": "Grayish bark with shallow ridges and short, stubby side branches called spur shoots.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/ginkgo/"]
+  },
+  {
+    "id": "black-walnut",
+    "commonName": "Black Walnut",
+    "scientificName": "Juglans nigra",
+    "genus": "Juglans",
+    "family": "Juglandaceae",
+    "native": true,
+    "rarity": "uncommon",
+    "leafType": "compound",
+    "leafShape": "compound-pinnate",
+    "fallColor": "yellow",
+    "size": "50-75 ft",
+    "funFacts": [
+      "Crush its leaves and you'll smell a spicy, almost citrusy scent.",
+      "Its roots release a chemical that stops some other plants from growing nearby.",
+      "The hard-shelled nuts inside green husks are a favorite target for squirrels."
+    ],
+    "whoLivesHere": "Squirrels bury and hoard its nuts all over the neighborhood, which is how new walnut trees often sprout.",
+    "lookalikes": [
+      { "id": "honeylocust", "howToTell": "Black walnut leaflets are larger with slightly toothed edges and a spicy smell; honeylocust leaflets are smaller and smooth-edged." }
+    ],
+    "winterClues": "Dark, deeply furrowed bark in a diamond pattern, and branch tips with a chambered (segmented) pith inside twigs.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/black-walnut/"]
+  },
+  {
+    "id": "eastern-redbud",
+    "commonName": "Eastern Redbud",
+    "scientificName": "Cercis canadensis",
+    "genus": "Cercis",
+    "family": "Fabaceae",
+    "native": true,
+    "rarity": "uncommon",
+    "leafType": "simple",
+    "leafShape": "simple-heart",
+    "fallColor": "yellow",
+    "size": "20-25 ft",
+    "funFacts": [
+      "In early spring, its bare branches burst into clusters of pink-magenta flowers before any leaves appear.",
+      "Its leaves are heart-shaped, which makes it one of the easiest trees to recognize.",
+      "It naturally grows at the edges of forests, which is why it does fine with some shade in a yard."
+    ],
+    "whoLivesHere": "Its early flowers are an important first source of nectar for bees each spring.",
+    "lookalikes": [],
+    "winterClues": "Smooth gray bark that turns reddish and scaly with age, and flattened, dark seed pods that hang on through winter.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/redbud/"]
+  },
+  {
+    "id": "callery-pear",
+    "commonName": "Callery Pear",
+    "scientificName": "Pyrus calleryana",
+    "genus": "Pyrus",
+    "family": "Rosaceae",
+    "native": false,
+    "rarity": "common",
+    "leafType": "simple",
+    "leafShape": "simple-toothed",
+    "fallColor": "red to purple",
+    "size": "30-50 ft",
+    "funFacts": [
+      "It was planted all over the country because it blooms with a huge burst of white flowers every spring.",
+      "The flowers smell bad to a lot of people — some say like old socks or fish.",
+      "It was originally bred to be seedless, but different varieties cross-pollinated and now it spreads on its own."
+    ],
+    "whoLivesHere": "It spreads so fast into wild areas that it crowds out native trees and shrubs, so it isn't actually great for local wildlife.",
+    "lookalikes": [],
+    "winterClues": "Smooth gray bark and a tight, symmetrical branch shape; wild offspring growing outside yards often have sharp thorns.",
+    "troubleTree": "Illinois is banning the sale of Callery pear (including the 'Bradford' pear) starting January 1, 2028, because it spreads aggressively into wild areas and crowds out native plants.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/callery-pear/"]
+  }
+]

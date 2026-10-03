@@ -1,7 +1,12 @@
 import { useState } from 'react'
 import type { Organ, PlantNetResponse } from './plantnet'
 import { identify } from './plantnet'
+import species from './data/species.json'
+import { LeafIcon } from './components/LeafIcon'
+import type { Species } from './data/species'
 import './App.css'
+
+const catalog = species as Species[]
 
 const ORGANS: { value: Organ; label: string }[] = [
   { value: 'leaf', label: 'Leaf' },
@@ -99,6 +104,18 @@ function App() {
       </section>
 
       {error && <p className="error">{error}</p>}
+
+      <section>
+        <h2>Catalog preview ({catalog.length} species)</h2>
+        <div className="catalog-grid">
+          {catalog.map((s) => (
+            <div key={s.id} className="catalog-card" title={s.scientificName}>
+              <LeafIcon shape={s.leafShape} size={36} />
+              <span>{s.commonName}</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {response && (
         <section>
