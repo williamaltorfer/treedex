@@ -18,6 +18,7 @@ import { Dex } from './screens/Dex'
 import { SpeciesCard } from './screens/SpeciesCard'
 import { Profiles } from './screens/Profiles'
 import { Badges } from './screens/Badges'
+import { Settings } from './screens/Settings'
 import { computeBadges } from './badges'
 import { reconcilePendingCatches } from './offlineQueue'
 import './App.css'
@@ -35,6 +36,7 @@ type Screen =
   | { name: 'species'; species: Species }
   | { name: 'profiles' }
   | { name: 'badges' }
+  | { name: 'settings' }
 
 function App() {
   const [profiles, setProfiles] = useState<Profile[]>([])
@@ -249,6 +251,14 @@ function App() {
           onBack={() => setScreen({ name: 'home' })}
         />
       )
+    case 'settings':
+      return (
+        <Settings
+          onExport={() => void exportBackup()}
+          onImport={(file) => void importBackup(file).then(refreshAll)}
+          onBack={() => setScreen({ name: 'home' })}
+        />
+      )
     default:
       return (
         <Home
@@ -260,8 +270,7 @@ function App() {
           onDex={() => setScreen({ name: 'dex' })}
           onBadges={() => setScreen({ name: 'badges' })}
           onProfiles={() => setScreen({ name: 'profiles' })}
-          onExport={() => void exportBackup()}
-          onImport={(file) => void importBackup(file).then(refreshAll)}
+          onSettings={() => setScreen({ name: 'settings' })}
         />
       )
   }

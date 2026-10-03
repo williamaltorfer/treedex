@@ -148,6 +148,18 @@ h2 {
 .home-header {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.settings-btn {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  width: 2.25rem;
+  height: 2.25rem;
+  font-size: 1.1rem;
+  box-shadow: var(--shadow-sm);
 }
 
 .profile-chip {

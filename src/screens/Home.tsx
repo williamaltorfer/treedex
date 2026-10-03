@@ -3,7 +3,6 @@ import type { Catch, Profile } from '../types'
 import { computeBadges, mostRecentBadge, totalPoints } from '../badges'
 import { levelProgress } from '../levels'
 import { weeklyQuest } from '../quests'
-import { resetAllData } from '../db'
 
 export function Home({
   catalog,
@@ -14,8 +13,7 @@ export function Home({
   onDex,
   onBadges,
   onProfiles,
-  onExport,
-  onImport,
+  onSettings,
 }: {
   catalog: Species[]
   catches: Catch[]
@@ -25,15 +23,8 @@ export function Home({
   onDex: () => void
   onBadges: () => void
   onProfiles: () => void
-  onExport: () => void
-  onImport: (file: File) => void
+  onSettings: () => void
 }) {
-  async function handleReset() {
-    if (!window.confirm('Delete all catches and profiles on this phone? This cannot be undone.')) return
-    await resetAllData()
-    window.location.reload()
-  }
-
   const caughtCount = new Set(catches.filter((c) => c.speciesId).map((c) => c.speciesId)).size
   const dexPct = catalog.length > 0 ? Math.round((caughtCount / catalog.length) * 100) : 0
   const points = totalPoints(activeProfileCatches, catalog)
@@ -46,6 +37,9 @@ export function Home({
       <div className="home-header">
         <button className="profile-chip" onClick={onProfiles}>
           {activeProfile ? `${activeProfile.avatar} ${activeProfile.name}` : 'Choose who'}
+        </button>
+        <button className="settings-btn" onClick={onSettings} aria-label="Settings">
+          ⚙️
         </button>
       </div>
 
@@ -110,29 +104,6 @@ export function Home({
 
       <button className="reset-btn" onClick={onBadges}>
         Badge shelf
-      </button>
-
-      <section className="backup-row">
-        <button className="reset-btn" onClick={onExport}>
-          Export backup
-        </button>
-        <label className="reset-btn import-label">
-          Import backup
-          <input
-            type="file"
-            accept="application/json"
-            hidden
-            onChange={(e) => {
-              const f = e.target.files?.[0]
-              if (f) onImport(f)
-              e.target.value = ''
-            }}
-          />
-        </label>
-      </section>
-
-      <button className="reset-btn danger" onClick={handleReset}>
-        Reset all data
       </button>
     </main>
   )
