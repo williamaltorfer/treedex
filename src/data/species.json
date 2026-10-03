@@ -325,5 +325,27 @@
     "winterClues": "Smooth gray bark and a tight, symmetrical branch shape; wild offspring growing outside yards often have sharp thorns.",
     "troubleTree": "Illinois is banning the sale of Callery pear (including the 'Bradford' pear) starting January 1, 2028, because it spreads aggressively into wild areas and crowds out native plants.",
     "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/callery-pear/"]
+  },
+  {
+    "id": "american-elm",
+    "commonName": "American Elm",
+    "scientificName": "Ulmus americana",
+    "genus": "Ulmus",
+    "family": "Ulmaceae",
+    "native": true,
+    "rarity": "uncommon",
+    "leafType": "simple",
+    "leafShape": "simple-toothed",
+    "fallColor": "golden yellow",
+    "size": "60-80 ft",
+    "funFacts": [
+      "Its branches spread out and arch over like a graceful fountain — this is called a 'vase shape.'",
+      "A tiny beetle spreads a disease called Dutch elm disease, which killed millions of American elms starting in the 1950s.",
+      "New disease-resistant varieties like 'Princeton' and 'Valley Forge' are being replanted on city streets today."
+    ],
+    "whoLivesHere": "Its seeds feed songbirds and squirrels in spring, and its broad canopy once shaded entire city blocks in old neighborhoods.",
+    "lookalikes": [],
+    "winterClues": "Gray, deeply furrowed bark and a vase-shaped silhouette — the trunk splits into wide arching branches instead of growing straight up.",
+    "sources": ["https://mortonarb.org/plant-and-protect/trees-and-plants/american-elm/"]
   }
 ]
