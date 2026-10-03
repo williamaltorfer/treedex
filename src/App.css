@@ -1,0 +1,105 @@
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+h1 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.subtitle {
+  margin: 0.25rem 0 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+section h2 {
+  font-size: 1rem;
+  margin: 0 0 0.5rem;
+}
+
+.organ-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.organ {
+  padding: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 0.75rem;
+  background: white;
+  font-size: 1rem;
+}
+
+.organ.selected {
+  border-color: #2f6b3a;
+  background: #e8f0e8;
+}
+
+.camera-btn {
+  display: block;
+  text-align: center;
+  padding: 1rem;
+  border: 2px dashed #999;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
+
+.preview {
+  width: 100%;
+  margin-top: 0.75rem;
+  border-radius: 0.75rem;
+}
+
+.identify-btn {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: #2f6b3a;
+  color: white;
+}
+
+.identify-btn:disabled {
+  background: #aaa;
+}
+
+.reset-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  background: white;
+}
+
+.error {
+  color: #b00020;
+  white-space: pre-wrap;
+}
+
+.results {
+  padding-left: 1.25rem;
+}
+
+.score {
+  color: #2f6b3a;
+  font-weight: 600;
+}
+
+.common-names {
+  color: #666;
+  font-size: 0.85rem;
+}
+
+pre {
+  font-size: 0.7rem;
+  overflow-x: auto;
+  background: #eee;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
