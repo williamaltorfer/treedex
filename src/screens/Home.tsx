@@ -29,7 +29,9 @@ export function Home({
   const dexPct = catalog.length > 0 ? Math.round((caughtCount / catalog.length) * 100) : 0
   const points = totalPoints(activeProfileCatches, catalog)
   const progress = levelProgress(points)
-  const recentBadge = mostRecentBadge(computeBadges(activeProfileCatches, catalog))
+  const badges = computeBadges(activeProfileCatches, catalog)
+  const recentBadge = mostRecentBadge(badges)
+  const earnedBadgeCount = badges.filter((b) => b.earned).length
   const queuedCount = catches.filter((c) => c.pendingIdentification).length
 
   return (
@@ -95,16 +97,36 @@ export function Home({
       <p className="quest-banner">🌳 This week's quest: {weeklyQuest()}</p>
 
       <button className="catch-btn" onClick={onCatch}>
-        Catch a tree
+        <span className="catch-btn-icon">📸</span>
+        <span className="catch-btn-text">
+          <strong>Catch a Tree</strong>
+          <span>Point, snap, and see what you find</span>
+        </span>
       </button>
 
-      <button className="identify-btn" onClick={onDex}>
-        Open dex
-      </button>
+      <div className="menu-tiles">
+        <button className="menu-tile" onClick={onDex}>
+          <span className="menu-tile-icon dex-icon">📖</span>
+          <span className="menu-tile-text">
+            <strong>Open TreeDex</strong>
+            <span>
+              {caughtCount} of {catalog.length} trees found
+            </span>
+          </span>
+          <span className="menu-tile-arrow">›</span>
+        </button>
 
-      <button className="reset-btn" onClick={onBadges}>
-        Badge shelf
-      </button>
+        <button className="menu-tile" onClick={onBadges}>
+          <span className="menu-tile-icon badge-icon">🏅</span>
+          <span className="menu-tile-text">
+            <strong>Badge Shelf</strong>
+            <span>
+              {earnedBadgeCount} of {badges.length} badges earned
+            </span>
+          </span>
+          <span className="menu-tile-arrow">›</span>
+        </button>
+      </div>
     </main>
   )
 }

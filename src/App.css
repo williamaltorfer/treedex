@@ -313,15 +313,108 @@ h2 {
 
 .catch-btn {
   width: 100%;
-  padding: 1.4rem;
-  font-size: 1.3rem;
-  font-weight: 700;
-  font-family: var(--font-display);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.4rem;
   border: none;
   border-radius: var(--radius-lg);
   background: linear-gradient(160deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-md), 0 0 0 3px rgba(47, 122, 66, 0.15);
+  text-align: left;
+}
+
+.catch-btn-icon {
+  font-size: 2.2rem;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  width: 3.2rem;
+  height: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.catch-btn-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.catch-btn-text strong {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+}
+
+.catch-btn-text span {
+  font-size: 0.8rem;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+/* Menu tiles (Dex, Badges) */
+
+.menu-tiles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.menu-tile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.menu-tile-icon {
+  font-size: 1.5rem;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.menu-tile-icon.dex-icon {
+  background: var(--primary-tint);
+}
+
+.menu-tile-icon.badge-icon {
+  background: var(--accent-tint);
+}
+
+.menu-tile-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+}
+
+.menu-tile-text strong {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.menu-tile-text span {
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.menu-tile-arrow {
+  font-size: 1.4rem;
+  color: var(--ink-soft);
 }
 
 .backup-row {
