@@ -96,29 +96,258 @@ section h2 {
   font-size: 0.85rem;
 }
 
-.catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.5rem;
-}
-
-.catalog-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 0.5rem;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 0.5rem;
-  font-size: 0.75rem;
-  text-align: center;
-}
-
 pre {
   font-size: 0.7rem;
   overflow-x: auto;
   background: #eee;
   padding: 0.5rem;
   border-radius: 0.5rem;
+}
+
+.back-btn {
+  align-self: flex-start;
+  border: none;
+  background: none;
+  color: #2f6b3a;
+  font-size: 1rem;
+  padding: 0;
+}
+
+/* Home */
+
+.home-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.profile-chip {
+  border: 1px solid #ccc;
+  border-radius: 999px;
+  background: white;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.dex-progress {
+  color: #666;
+  margin: 0;
+}
+
+.catch-btn {
+  width: 100%;
+  padding: 1.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 1rem;
+  background: #2f6b3a;
+  color: white;
+}
+
+.backup-row {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.backup-row .reset-btn {
+  margin-top: 0;
+}
+
+.import-label {
+  text-align: center;
+  cursor: pointer;
+}
+
+/* Close call */
+
+.candidate-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.candidate-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  border-radius: 0.75rem;
+  background: white;
+}
+
+/* Reveal */
+
+.reveal-card {
+  perspective: 1000px;
+}
+
+.reveal-card-inner {
+  position: relative;
+  border-radius: 1rem;
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.4s;
+  transform: rotateY(90deg);
+  border: 3px solid #999;
+}
+
+.reveal-card.flipped .reveal-card-inner {
+  transform: rotateY(0deg);
+}
+
+.reveal-card-inner.rarity-common { border-color: #8a8a8a; }
+.reveal-card-inner.rarity-uncommon { border-color: #3d7dca; }
+.reveal-card-inner.rarity-rare { border-color: #9b59b6; }
+.reveal-card-inner.rarity-legendary { border-color: #d4a017; }
+
+.reveal-photo {
+  width: 100%;
+  border-radius: 0.75rem;
+}
+
+.reveal-icon {
+  position: absolute;
+  bottom: -0.5rem;
+  right: -0.5rem;
+  background: white;
+  border-radius: 50%;
+  padding: 0.25rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.scientific-name {
+  font-style: italic;
+  color: #666;
+  margin: -1rem 0 0;
+}
+
+.rarity-badge {
+  align-self: flex-start;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: white;
+}
+
+.rarity-badge.rarity-common { background: #8a8a8a; }
+.rarity-badge.rarity-uncommon { background: #3d7dca; }
+.rarity-badge.rarity-rare { background: #9b59b6; }
+.rarity-badge.rarity-legendary { background: #d4a017; }
+
+.fun-fact {
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+/* Dex */
+
+.dex-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.dex-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.75rem 0.5rem;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 0.75rem;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.dex-cell:disabled {
+  opacity: 0.6;
+}
+
+/* Species card */
+
+.stats-list {
+  padding-left: 1.25rem;
+  margin: 0;
+}
+
+.catch-entry {
+  color: #666;
+  font-size: 0.85rem;
+  margin: 0.25rem 0;
+}
+
+/* Profiles */
+
+.profile-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.profile-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.profile-row.active .profile-btn {
+  border-color: #2f6b3a;
+  background: #e8f0e8;
+}
+
+.profile-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border: 2px solid #ccc;
+  border-radius: 0.75rem;
+  background: white;
+  font-size: 1rem;
+}
+
+.avatar {
+  font-size: 1.3rem;
+}
+
+.profile-delete {
+  border: none;
+  background: none;
+  font-size: 1.3rem;
+  color: #999;
+  padding: 0.5rem;
+}
+
+.avatar-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.avatar-choice {
+  font-size: 1.5rem;
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  border-radius: 0.75rem;
+  background: white;
+}
+
+.avatar-choice.selected {
+  border-color: #2f6b3a;
+  background: #e8f0e8;
+}
+
+.name-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  margin-bottom: 0.5rem;
 }
