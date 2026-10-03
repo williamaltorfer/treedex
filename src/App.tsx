@@ -16,6 +16,8 @@ import { Mystery } from './screens/Mystery'
 import { Dex } from './screens/Dex'
 import { SpeciesCard } from './screens/SpeciesCard'
 import { Profiles } from './screens/Profiles'
+import { Badges } from './screens/Badges'
+import { computeBadges } from './badges'
 import './App.css'
 
 const catalog = speciesData as Species[]
@@ -30,6 +32,7 @@ type Screen =
   | { name: 'dex' }
   | { name: 'species'; species: Species }
   | { name: 'profiles' }
+  | { name: 'badges' }
 
 function App() {
   const [profiles, setProfiles] = useState<Profile[]>([])
@@ -223,14 +226,23 @@ function App() {
       )
     case 'species':
       return <SpeciesCard species={screen.species} catches={catches} onBack={() => setScreen({ name: 'dex' })} />
+    case 'badges':
+      return (
+        <Badges
+          badges={computeBadges(catches.filter((c) => c.catcher === activeProfileId), catalog)}
+          onBack={() => setScreen({ name: 'home' })}
+        />
+      )
     default:
       return (
         <Home
           catalog={catalog}
           catches={catches}
+          activeProfileCatches={catches.filter((c) => c.catcher === activeProfileId)}
           activeProfile={activeProfile}
           onCatch={() => setScreen({ name: 'catch' })}
           onDex={() => setScreen({ name: 'dex' })}
+          onBadges={() => setScreen({ name: 'badges' })}
           onProfiles={() => setScreen({ name: 'profiles' })}
           onExport={() => void exportBackup()}
           onImport={(file) => void importBackup(file).then(refreshAll)}

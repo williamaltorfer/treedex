@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import type { Species } from '../data/species'
 import type { Catch } from '../types'
 import { LeafIcon } from '../components/LeafIcon'
+import { ReadAloudButton } from '../components/ReadAloudButton'
 
 export function SpeciesCard({
   species,
@@ -35,7 +36,9 @@ export function SpeciesCard({
         <LeafIcon shape={species.leafShape} size={64} />
       )}
 
-      <h1>{species.commonName}</h1>
+      <h1>
+        {species.commonName} <ReadAloudButton text={`${species.commonName}. ${species.funFacts.join(' ')}`} />
+      </h1>
       <p className="scientific-name">{species.scientificName}</p>
       <span className={`rarity-badge rarity-${species.rarity}`}>{species.rarity}</span>
 

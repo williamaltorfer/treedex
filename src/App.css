@@ -351,3 +351,57 @@ pre {
   border-radius: 0.75rem;
   margin-bottom: 0.5rem;
 }
+
+/* Quests + read-aloud */
+
+.quest-banner {
+  background: #fff6dd;
+  border: 1px solid #e8d48a;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.read-aloud-btn {
+  border: none;
+  background: none;
+  font-size: 1.1rem;
+  padding: 0 0.25rem;
+  vertical-align: middle;
+}
+
+/* Badges */
+
+.badge-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.badge-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #eee;
+  text-align: center;
+  opacity: 0.6;
+}
+
+.badge-card.earned {
+  background: #fff6dd;
+  border: 1px solid #e8d48a;
+  opacity: 1;
+}
+
+.badge-icon {
+  font-size: 1.8rem;
+}
+
+.badge-description {
+  font-size: 0.75rem;
+  color: #666;
+}

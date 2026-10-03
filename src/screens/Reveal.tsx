@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import type { Species } from '../data/species'
 import { LeafIcon } from '../components/LeafIcon'
+import { ReadAloudButton } from '../components/ReadAloudButton'
 
 export function Reveal({
   species,
@@ -37,7 +38,9 @@ export function Reveal({
       <p className="scientific-name">{species.scientificName}</p>
       <span className={`rarity-badge rarity-${species.rarity}`}>{species.rarity}</span>
 
-      <p className="fun-fact">{species.funFacts[0]}</p>
+      <p className="fun-fact">
+        {species.funFacts[0]} <ReadAloudButton text={`${species.commonName}. ${species.funFacts[0]}`} />
+      </p>
 
       <button className="identify-btn" onClick={onDone}>
         Nice!

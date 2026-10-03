@@ -1,26 +1,33 @@
 import type { Species } from '../data/species'
 import type { Catch, Profile } from '../types'
+import { totalPoints } from '../badges'
+import { weeklyQuest } from '../quests'
 
 export function Home({
   catalog,
   catches,
+  activeProfileCatches,
   activeProfile,
   onCatch,
   onDex,
+  onBadges,
   onProfiles,
   onExport,
   onImport,
 }: {
   catalog: Species[]
   catches: Catch[]
+  activeProfileCatches: Catch[]
   activeProfile: Profile | null
   onCatch: () => void
   onDex: () => void
+  onBadges: () => void
   onProfiles: () => void
   onExport: () => void
   onImport: (file: File) => void
 }) {
   const caughtCount = new Set(catches.filter((c) => c.speciesId).map((c) => c.speciesId)).size
+  const points = totalPoints(activeProfileCatches, catalog)
 
   return (
     <main>
@@ -33,7 +40,10 @@ export function Home({
       <h1>TreeDex</h1>
       <p className="dex-progress">
         {caughtCount} of {catalog.length} Chicago trees caught
+        {activeProfile ? ` · ${points} pts` : ''}
       </p>
+
+      <p className="quest-banner">🌳 This week's quest: {weeklyQuest()}</p>
 
       <button className="catch-btn" onClick={onCatch}>
         Catch a tree
@@ -41,6 +51,10 @@ export function Home({
 
       <button className="identify-btn" onClick={onDex}>
         Open dex
+      </button>
+
+      <button className="reset-btn" onClick={onBadges}>
+        Badge shelf
       </button>
 
       <section className="backup-row">
