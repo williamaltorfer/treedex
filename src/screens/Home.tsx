@@ -4,16 +4,7 @@ import { computeBadges, mostRecentBadge, totalPoints } from '../badges'
 import { LEVELS, levelProgress } from '../levels'
 import { weeklyQuest } from '../quests'
 import { LeafIcon } from '../components/LeafIcon'
-import {
-  AvatarIcon,
-  BookIcon,
-  CameraIcon,
-  ChevronRightIcon,
-  CompassIcon,
-  GearIcon,
-  MedalIcon,
-  SignalIcon,
-} from '../components/icons'
+import { BookIcon, CameraIcon, ChevronRightIcon, CompassIcon, GearIcon, MedalIcon, SignalIcon } from '../components/icons'
 
 /** Region shown in the Home screen's mini Dex preview — first region in the catalog's natural order. */
 const PREVIEW_REGION: Region = 'Maples'
@@ -59,7 +50,7 @@ export function Home({
         <button className="profile-chip" onClick={onProfiles}>
           {activeProfile ? (
             <>
-              <AvatarIcon avatar={activeProfile.avatar} size={22} />
+              <span className="avatar">{activeProfile.avatar}</span>
               {activeProfile.name}
             </>
           ) : (

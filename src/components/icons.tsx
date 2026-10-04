@@ -37,6 +37,16 @@ export function ChevronRightIcon({ size = 16, className }: IconProps) {
   )
 }
 
+export function UserPlusIcon({ size = 18, className }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
+      <circle cx="9" cy="8" r="3.4" stroke="currentColor" {...base} />
+      <path d="M3 20c0-3.5 2.7-6 6-6s6 2.5 6 6" stroke="currentColor" {...base} />
+      <path d="M18 8v6M15 11h6" stroke="currentColor" {...base} />
+    </svg>
+  )
+}
+
 export function CloseIcon({ size = 20, className }: IconProps) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
@@ -184,32 +194,10 @@ export function LevelBadgeIcon({ levelName, size = 22, className }: { levelName:
   }
 }
 
-/** Kid avatar icons, keyed by the emoji stored on the Profile (data/storage format unchanged). */
-const AVATAR_PATHS: Record<string, string> = {
-  '🦉': 'M12 3c-4 0-7 3-7 7 0 3 2 6 7 10 5-4 7-7 7-10 0-4-3-7-7-7z', // owl silhouette
-  '🦊': 'M12 4l6 3-2 7-4 6-4-6-2-7 6-3z', // fox face
-  '🐿️': 'M6 18c0-7 3-12 8-12 3 0 5 2 5 5 0 4-3 6-7 6-2 0-3 1-3 3v1', // squirrel tail curl
-  '🦌': 'M12 22V11M12 11l-4-6M12 11l4-6M8 5l-2-2M16 5l2-2', // deer antlers
-  '🐦': 'M3 13c3-5 9-7 14-5-1 2-3 3-5 3 3 1 4 4 3 7-3-1-5-3-6-6-2 1-4 2-6 1z', // bird wing
-  '🦝': 'M12 4c-5 0-8 4-8 8 0 5 4 8 8 8s8-3 8-8c0-4-3-8-8-8zM7 9l1-3M17 9l-1-3', // raccoon mask
-  '🐢': 'M12 7a7 5 0 017 5 7 5 0 01-14 0 7 5 0 017-5zM9 8l-3-2M15 8l3-2M12 17v3', // turtle shell
-  '🦔': 'M4 16c0-6 4-10 8-10s8 4 8 10c-2-1-3-3-5-2 1-2 0-4-2-4s-3 2-2 4c-2-1-3 1-5 2 1 1 3 2 5 1', // hedgehog spikes
-}
-
-export function AvatarIcon({ avatar, size = 22, className }: { avatar: string } & IconProps) {
-  const d = AVATAR_PATHS[avatar]
-  if (!d) {
-    return (
-      <svg width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
-        <circle cx="12" cy="12" r="9" stroke="currentColor" {...base} />
-      </svg>
-    )
-  }
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden="true">
-      <path d={d} stroke="currentColor" {...base} fill="currentColor" fillOpacity={0.15} />
-    </svg>
-  )
-}
-
-export const AVATAR_OPTIONS = Object.keys(AVATAR_PATHS)
+/**
+ * Kid avatars are real emoji, not line icons: an abstract single-path
+ * "owl"/"fox"/etc. silhouette at icon weight is illegible, and the whole
+ * point of an avatar picker is instant, colorful recognizability. Storage
+ * format is just the emoji character, unchanged.
+ */
+export const AVATAR_OPTIONS = ['🦉', '🦊', '🐿️', '🦌', '🐦', '🦝', '🐢', '🦔']

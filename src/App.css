@@ -924,6 +924,17 @@ h2 {
 
 /* Profiles */
 
+.add-player-panel {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 1.1rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.add-player-panel h2 {
+  margin-bottom: 0.8rem;
+}
+
 .profile-list {
   display: flex;
   flex-direction: column;
@@ -957,16 +968,8 @@ h2 {
 }
 
 .avatar {
-  width: 1.9rem;
-  height: 1.9rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.avatar svg {
-  width: 100%;
-  height: 100%;
+  font-size: 1.4rem;
+  line-height: 1;
 }
 
 .profile-delete {
@@ -994,12 +997,8 @@ h2 {
   border: 1.5px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--surface);
+  font-size: 1.4rem;
   min-height: 3rem;
-}
-
-.avatar-choice svg {
-  width: 24px;
-  height: 24px;
 }
 
 .avatar-choice.selected {
