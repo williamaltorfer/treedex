@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import type { Catch } from '../types'
 import { ReadAloudButton } from '../components/ReadAloudButton'
 import { fetchSpeciesSummary, type WikiSummary } from '../wikipedia'
+import { BackArrowIcon, PineTagIcon } from '../components/icons'
 
 export function WildFind({
   offCatalog,
@@ -43,11 +44,13 @@ export function WildFind({
     <main>
       {mode === 'view' && (
         <button className="back-btn" onClick={onClose}>
-          ← Back
+          <BackArrowIcon /> Back
         </button>
       )}
 
-      <span className="wild-find-badge">🌲 Wild find — not on the Chicago list</span>
+      <span className="wild-find-badge">
+        <PineTagIcon /> Wild find — not on the Chicago list
+      </span>
 
       {photoUrl && <img className="reveal-photo" src={photoUrl} alt={offCatalog.commonName} />}
 

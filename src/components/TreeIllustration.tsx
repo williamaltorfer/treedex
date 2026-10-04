@@ -1,7 +1,7 @@
 import type { TreeForm } from '../treeForm'
 
 const GROUND_Y = 58
-const TRUNK_COLOR = '#7a5c3e'
+const TRUNK_COLOR = '#6b5339'
 
 /** trunk height/width and canopy radius for each of the 5 growth stages (seed through mature). */
 const STAGE_METRICS = [
@@ -19,7 +19,7 @@ function Canopy({ form, cx, topY, r, color }: { form: TreeForm; cx: number; topY
   if (form === 'conifer') {
     const top = topY - rr * 0.6
     return (
-      <g fill={color}>
+      <g fill={color} fillOpacity={0.9} stroke={color} strokeWidth="1" strokeLinejoin="round">
         <polygon points={`${cx},${top} ${cx - rr * 0.9},${top + rr * 1.1} ${cx + rr * 0.9},${top + rr * 1.1}`} />
         <polygon
           points={`${cx},${top + rr * 0.6} ${cx - rr * 1.1},${top + rr * 1.9} ${cx + rr * 1.1},${top + rr * 1.9}`}
@@ -30,7 +30,7 @@ function Canopy({ form, cx, topY, r, color }: { form: TreeForm; cx: number; topY
 
   if (form === 'vase') {
     return (
-      <g fill={color} fillOpacity={0.85}>
+      <g fill={color} fillOpacity={0.82} stroke={color} strokeOpacity={0.5} strokeWidth="1">
         <ellipse cx={cx - rr * 0.5} cy={topY} rx={rr * 0.8} ry={rr * 0.6} />
         <ellipse cx={cx + rr * 0.5} cy={topY} rx={rr * 0.8} ry={rr * 0.6} />
         <ellipse cx={cx} cy={topY - rr * 0.3} rx={rr} ry={rr * 0.6} />
@@ -41,13 +41,13 @@ function Canopy({ form, cx, topY, r, color }: { form: TreeForm; cx: number; topY
   if (form === 'weeping') {
     return (
       <g>
-        <ellipse cx={cx} cy={topY} rx={rr} ry={rr * 0.7} fill={color} fillOpacity={0.85} />
+        <ellipse cx={cx} cy={topY} rx={rr} ry={rr * 0.7} fill={color} fillOpacity={0.82} stroke={color} strokeOpacity={0.5} strokeWidth="1" />
         {[-0.6, -0.2, 0.2, 0.6].map((offset) => (
           <path
             key={offset}
             d={`M${cx + offset * rr} ${topY} q${offset * 2} ${rr * 1.6} ${offset * rr * 0.4} ${rr * 2.2}`}
             stroke={color}
-            strokeWidth="1.2"
+            strokeWidth="1.4"
             fill="none"
             strokeLinecap="round"
           />
@@ -57,10 +57,22 @@ function Canopy({ form, cx, topY, r, color }: { form: TreeForm; cx: number; topY
   }
 
   if (form === 'spreading') {
-    return <ellipse cx={cx} cy={topY + rr * 0.1} rx={rr * 1.3} ry={rr * 0.8} fill={color} fillOpacity={0.85} />
+    return (
+      <ellipse
+        cx={cx}
+        cy={topY + rr * 0.1}
+        rx={rr * 1.3}
+        ry={rr * 0.8}
+        fill={color}
+        fillOpacity={0.82}
+        stroke={color}
+        strokeOpacity={0.5}
+        strokeWidth="1"
+      />
+    )
   }
 
-  return <circle cx={cx} cy={topY} r={rr} fill={color} fillOpacity={0.85} />
+  return <circle cx={cx} cy={topY} r={rr} fill={color} fillOpacity={0.82} stroke={color} strokeOpacity={0.5} strokeWidth="1" />
 }
 
 export function TreeIllustration({

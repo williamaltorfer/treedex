@@ -4,6 +4,7 @@ import { identify } from '../plantnet'
 import { compressImage } from '../image'
 import type { Species } from '../data/species'
 import { matchToCatalog, type MatchOutcome } from '../match'
+import { BackArrowIcon, SignalIcon, SnowflakeIcon } from '../components/icons'
 
 const ORGANS: { value: Organ; label: string }[] = [
   { value: 'leaf', label: 'Leaf' },
@@ -80,12 +81,13 @@ export function CatchScreen({
   return (
     <main>
       <button className="back-btn" onClick={onCancel}>
-        ← Back
+        <BackArrowIcon /> Back
       </button>
 
       {isWinterMonth() && (
         <p className="quest-banner">
-          ❄️ No leaves around? Try Bark or Seed/nut instead — lots of trees can still be identified in winter.
+          <SnowflakeIcon />
+          No leaves around? Try Bark or Seed/nut instead — lots of trees can still be identified in winter.
         </p>
       )}
 
@@ -121,7 +123,8 @@ export function CatchScreen({
 
       {!isOnline && (
         <p className="offline-banner">
-          📡 No connection right now — your photo will be saved and identified automatically once you're back
+          <SignalIcon />
+          No connection right now — your photo will be saved and identified automatically once you're back
           online.
         </p>
       )}

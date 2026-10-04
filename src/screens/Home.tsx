@@ -3,6 +3,17 @@ import type { Catch, Profile } from '../types'
 import { computeBadges, mostRecentBadge, totalPoints } from '../badges'
 import { levelProgress } from '../levels'
 import { weeklyQuest } from '../quests'
+import {
+  AvatarIcon,
+  BookIcon,
+  CameraIcon,
+  ChevronRightIcon,
+  CompassIcon,
+  GearIcon,
+  LevelBadgeIcon,
+  MedalIcon,
+  SignalIcon,
+} from '../components/icons'
 
 export function Home({
   catalog,
@@ -38,18 +49,27 @@ export function Home({
     <main>
       <div className="home-header">
         <button className="profile-chip" onClick={onProfiles}>
-          {activeProfile ? `${activeProfile.avatar} ${activeProfile.name}` : 'Choose who'}
+          {activeProfile ? (
+            <>
+              <AvatarIcon avatar={activeProfile.avatar} size={22} />
+              {activeProfile.name}
+            </>
+          ) : (
+            'Choose who'
+          )}
         </button>
         <button className="settings-btn" onClick={onSettings} aria-label="Settings">
-          ⚙️
+          <GearIcon />
         </button>
       </div>
 
       <h1>TreeDex</h1>
 
-      <section className="level-card">
+      <section className="level-card card-clip">
         <div className="level-top">
-          <span className="level-emoji">{progress.level.emoji}</span>
+          <span className="level-emoji">
+            <LevelBadgeIcon levelName={progress.level.name} />
+          </span>
           <div>
             <div className="level-name">{progress.level.name}</div>
             <div className="level-points">{points} XP</div>
@@ -60,7 +80,7 @@ export function Home({
         </div>
         <div className="level-next">
           {progress.next
-            ? `${progress.pointsToNext! - progress.pointsIntoLevel} XP to ${progress.next.name} ${progress.next.emoji}`
+            ? `${progress.pointsToNext! - progress.pointsIntoLevel} XP to ${progress.next.name}`
             : 'Max level reached!'}
         </div>
       </section>
@@ -79,7 +99,9 @@ export function Home({
 
       {recentBadge && (
         <button className="recent-badge" onClick={onBadges}>
-          <span className="recent-badge-icon">🏅</span>
+          <span className="recent-badge-icon">
+            <MedalIcon size={34} />
+          </span>
           <div>
             <div className="recent-badge-label">New badge earned!</div>
             <div className="recent-badge-name">{recentBadge.name}</div>
@@ -89,15 +111,21 @@ export function Home({
 
       {queuedCount > 0 && (
         <p className="offline-banner">
-          📡 {queuedCount} {queuedCount === 1 ? 'tree is' : 'trees are'} waiting to be identified — they'll finish
+          <SignalIcon />
+          {queuedCount} {queuedCount === 1 ? 'tree is' : 'trees are'} waiting to be identified — they'll finish
           automatically once you're back online.
         </p>
       )}
 
-      <p className="quest-banner">🌳 This week's quest: {weeklyQuest()}</p>
+      <p className="quest-banner">
+        <CompassIcon />
+        This week's quest: {weeklyQuest()}
+      </p>
 
-      <button className="catch-btn" onClick={onCatch}>
-        <span className="catch-btn-icon">📸</span>
+      <button className="catch-btn card-clip" onClick={onCatch}>
+        <span className="catch-btn-icon">
+          <CameraIcon />
+        </span>
         <span className="catch-btn-text">
           <strong>Catch a Tree</strong>
           <span>Point, snap, and see what you find</span>
@@ -106,25 +134,29 @@ export function Home({
 
       <div className="menu-tiles">
         <button className="menu-tile" onClick={onDex}>
-          <span className="menu-tile-icon dex-icon">📖</span>
+          <span className="menu-tile-icon dex-icon">
+            <BookIcon />
+          </span>
           <span className="menu-tile-text">
             <strong>Open TreeDex</strong>
             <span>
               {caughtCount} of {catalog.length} trees found
             </span>
           </span>
-          <span className="menu-tile-arrow">›</span>
+          <ChevronRightIcon className="menu-tile-arrow" />
         </button>
 
         <button className="menu-tile" onClick={onBadges}>
-          <span className="menu-tile-icon badge-icon">🏅</span>
+          <span className="menu-tile-icon badge-icon">
+            <MedalIcon />
+          </span>
           <span className="menu-tile-text">
             <strong>Badge Shelf</strong>
             <span>
               {earnedBadgeCount} of {badges.length} badges earned
             </span>
           </span>
-          <span className="menu-tile-arrow">›</span>
+          <ChevronRightIcon className="menu-tile-arrow" />
         </button>
       </div>
     </main>

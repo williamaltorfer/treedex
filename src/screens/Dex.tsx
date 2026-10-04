@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import type { Region, Species } from '../data/species'
 import type { Catch } from '../types'
 import { LeafIcon } from '../components/LeafIcon'
+import { BackArrowIcon, PineTagIcon } from '../components/icons'
 
 const REGION_ORDER: Region[] = [
   'Maples',
@@ -51,7 +52,7 @@ export function Dex({
   return (
     <main>
       <button className="back-btn" onClick={onBack}>
-        ← Back
+        <BackArrowIcon /> Back
       </button>
       <h1>Dex</h1>
 
@@ -78,7 +79,9 @@ export function Dex({
 
       {wildFinds.length > 0 && (
         <section>
-          <h2>🌲 Wild Finds</h2>
+          <h2 className="section-title-icon">
+            <PineTagIcon /> Wild Finds
+          </h2>
           <div className="dex-grid">
             {wildFinds.map((c) => (
               <WildFindTile key={c.id} catchRecord={c} onSelect={() => onSelectWildFind(c)} />

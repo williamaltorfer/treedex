@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import type { Profile } from '../types'
 import { newId } from '../id'
+import { AvatarIcon, AVATAR_OPTIONS, CloseIcon } from '../components/icons'
 
-const AVATARS = ['🦉', '🦊', '🐿️', '🦌', '🐦', '🦝', '🐢', '🦔']
+const AVATARS = AVATAR_OPTIONS
 
 export function Profiles({
   profiles,
@@ -39,11 +40,13 @@ export function Profiles({
         {profiles.map((p) => (
           <div key={p.id} className={p.id === activeProfileId ? 'profile-row active' : 'profile-row'}>
             <button className="profile-btn" onClick={() => onSwitch(p.id)}>
-              <span className="avatar">{p.avatar}</span>
+              <span className="avatar">
+                <AvatarIcon avatar={p.avatar} size={26} />
+              </span>
               {p.name}
             </button>
             <button className="profile-delete" onClick={() => onDelete(p.id)} aria-label={`Remove ${p.name}`}>
-              ×
+              <CloseIcon size={18} />
             </button>
           </div>
         ))}
@@ -57,8 +60,9 @@ export function Profiles({
               key={a}
               className={a === avatar ? 'avatar-choice selected' : 'avatar-choice'}
               onClick={() => setAvatar(a)}
+              aria-label="Choose avatar"
             >
-              {a}
+              <AvatarIcon avatar={a} size={24} />
             </button>
           ))}
         </div>

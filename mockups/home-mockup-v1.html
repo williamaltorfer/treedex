@@ -1,0 +1,602 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>TreeDex Mockup v1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: dark;
+  --bg: #10231C;
+  --bg-soft: #0C1C16;
+  --surface: #17352A;
+  --surface-2: #1F4536;
+  --paper: #F7F3E8;
+  --paper-soft: #EFE8D6;
+  --ink: #0D1A15;
+  --ink-soft: #4A5E52;
+  --mist: #CFEBDD;
+  --mist-soft: #8FB6A6;
+  --moss: #3FA66B;
+  --moss-dark: #2C7A4D;
+  --moss-tint: #1E3A2C;
+  --sunflare: #FFB627;
+  --sunflare-dark: #D99713;
+  --berry: #E8553F;
+  --berry-dark: #C23F2B;
+  --bark: #6B5339;
+  --rarity-common: #8FB6A6;
+  --rarity-uncommon: #4D9FE8;
+  --rarity-rare: #B06FE0;
+  --rarity-legendary: #FFB627;
+  --card-notch: 22px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.35);
+  --shadow-md: 0 10px 28px rgba(0,0,0,0.45);
+  --shadow-glow-moss: 0 0 0 2px var(--moss), 0 8px 24px rgba(63,166,107,0.35);
+  --shadow-glow-gold: 0 0 0 2px var(--sunflare), 0 8px 24px rgba(255,182,39,0.35);
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Jost', system-ui, sans-serif;
+  --ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 120ms;
+  --dur-flip: 560ms;
+  --dur-stamp: 420ms;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(63,166,107,0.10) 0%, transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(255,182,39,0.07) 0%, transparent 40%);
+  color: var(--mist);
+  font-family: var(--font-body);
+}
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+
+/* ---------- shared clip-path card shape: the signature element ---------- */
+.card-clip {
+  clip-path: polygon(
+    0 0, calc(100% - var(--card-notch)) 0, 100% var(--card-notch),
+    100% 100%, 0 100%
+  );
+}
+
+.app {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1.5rem 1.1rem 3rem;
+}
+
+/* ---------- Nav / header ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+}
+.topbar .wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.3rem;
+  letter-spacing: 0.01em;
+  color: var(--mist);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.topbar .wordmark svg { width: 26px; height: 26px; }
+.avatar-pill {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--sunflare);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- Level/XP hero card ---------- */
+.hero-card {
+  background: linear-gradient(155deg, var(--surface-2), var(--surface));
+  border-radius: var(--radius-lg);
+  padding: 1.3rem 1.2rem 1.1rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.card-clip.hero-card { clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 34px, 100% 100%, 0 100%); }
+.hero-card::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 34px; height: 34px;
+  background: var(--sunflare);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+.hero-top { display: flex; align-items: baseline; justify-content: space-between; }
+.hero-level-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--mist-soft);
+  font-weight: 500;
+}
+.hero-level-name {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--mist);
+  margin: 0.1rem 0 0.7rem;
+}
+.hero-level-name .lv-num { color: var(--sunflare); }
+.xp-track {
+  height: 10px;
+  background: var(--bg-soft);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+.xp-fill {
+  height: 100%;
+  width: 62%;
+  background: linear-gradient(90deg, var(--moss-dark), var(--moss));
+  border-radius: 999px;
+}
+.xp-caption {
+  display: flex; justify-content: space-between;
+  font-size: 0.72rem;
+  color: var(--mist-soft);
+  margin-top: 0.4rem;
+}
+
+/* ---------- Journal entries (dex progress / quest) with stamp rail ---------- */
+.journal-entry {
+  display: flex;
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.7rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+.stamp-rail {
+  width: 8px;
+  flex-shrink: 0;
+}
+.stamp-rail.moss { background: var(--moss); }
+.stamp-rail.gold { background: var(--sunflare); }
+.entry-body {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.entry-icon {
+  width: 38px; height: 38px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+}
+.entry-icon svg { width: 100%; height: 100%; }
+.entry-text { flex: 1; min-width: 0; }
+.entry-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--mist);
+  margin: 0 0 0.15rem;
+}
+.entry-sub {
+  font-size: 0.78rem;
+  color: var(--mist-soft);
+  margin: 0;
+}
+.entry-chevron { color: var(--mist-soft); flex-shrink: 0; }
+
+.dex-mini-track {
+  height: 6px;
+  background: var(--bg-soft);
+  border-radius: 999px;
+  margin-top: 0.4rem;
+  overflow: hidden;
+}
+.dex-mini-fill {
+  height: 100%;
+  width: 46%;
+  background: var(--sunflare);
+  border-radius: 999px;
+}
+
+/* ---------- Recent badge callout ---------- */
+.badge-callout {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: var(--moss-tint);
+  border: 1px solid rgba(63,166,107,0.4);
+  border-radius: var(--radius-md);
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 1.2rem;
+}
+.badge-callout .medal {
+  width: 42px; height: 42px;
+  flex-shrink: 0;
+}
+.badge-callout p { margin: 0; font-size: 0.82rem; color: var(--mist); }
+.badge-callout .label { font-family: var(--font-display); font-weight: 600; color: var(--sunflare); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; display:block; margin-bottom: 0.1rem; }
+
+/* ---------- Primary nav tiles ---------- */
+.tile-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6rem;
+  margin-bottom: 1.6rem;
+}
+.tile {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 1rem 0.5rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid transparent;
+  transition: transform var(--dur-fast) ease;
+}
+.tile.primary {
+  background: linear-gradient(160deg, var(--moss-dark), var(--moss));
+  box-shadow: var(--shadow-glow-moss);
+}
+.tile:active { transform: scale(0.96); }
+.tile svg { width: 34px; height: 34px; }
+.tile-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--mist);
+}
+.tile.primary .tile-label { color: #0D1A15; }
+
+/* ---------- Section label ---------- */
+.section-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--mist);
+  margin: 0 0 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.section-label .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--sunflare); }
+
+/* ---------- Mini dex grid preview ---------- */
+.dex-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.dex-cell {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.dex-cell.caught { background: var(--surface-2); }
+.dex-cell.caught svg { width: 60%; height: 60%; }
+.dex-cell.locked {
+  background: var(--bg-soft);
+  border: 1.5px dashed rgba(143,182,166,0.25);
+}
+.dex-cell.locked svg { width: 42%; height: 42%; opacity: 0.35; }
+.dex-cell .rarity-ring {
+  position: absolute; inset: -1.5px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--r);
+  pointer-events: none;
+}
+
+/* ---------- divider label for mockup sections ---------- */
+.mock-divider {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mist-soft);
+  text-align: center;
+  margin: 3rem 0 1.2rem;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.mock-divider::before, .mock-divider::after { content: ""; flex: 1; height: 1px; background: rgba(143,182,166,0.2); }
+
+/* =======================================================
+   REVEAL CARD (card flip + rarity border) — static pose
+   ======================================================= */
+.reveal-stage {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 2.5rem;
+  perspective: 1000px;
+}
+.reveal-card {
+  width: 260px;
+  aspect-ratio: 3/4.2;
+  position: relative;
+}
+.reveal-card .face {
+  position: absolute; inset: 0;
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%);
+  border: 3px solid var(--rarity-rare);
+}
+.reveal-card .face::after {
+  content: "";
+  position: absolute; top:0; right:0;
+  width: 28px; height: 28px;
+  background: var(--rarity-rare);
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+.reveal-photo {
+  height: 52%;
+  background: linear-gradient(160deg, #3a5f45, #1f3a2b);
+  display: flex; align-items: center; justify-content: center;
+}
+.reveal-photo svg { width: 70%; height: 70%; }
+.reveal-info { padding: 0.9rem 1rem; color: var(--ink); }
+.reveal-rarity-tag {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: var(--rarity-rare);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  margin-bottom: 0.4rem;
+}
+.reveal-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0 0 0.1rem;
+}
+.reveal-sci {
+  font-size: 0.72rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 0.6rem;
+}
+.reveal-stamp {
+  position: absolute;
+  bottom: 14px; right: -10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--berry);
+  border: 3px solid var(--berry);
+  padding: 0.15rem 0.6rem;
+  border-radius: 8px;
+  transform: rotate(-10deg);
+  background: rgba(247,243,232,0.9);
+  letter-spacing: 0.04em;
+}
+
+/* =======================================================
+   SPECIES CARD
+   ======================================================= */
+.species-card {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
+  border: 3px solid var(--rarity-uncommon);
+  box-shadow: var(--shadow-md);
+  color: var(--ink);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.species-hero {
+  height: 150px;
+  background: linear-gradient(160deg, #2f5240, #17352a);
+  position: relative;
+}
+.species-hero img { width: 100%; height: 100%; object-fit: cover; }
+.species-hero .tag {
+  position: absolute; top: 0.6rem; left: 0.6rem;
+  font-family: var(--font-display);
+  font-size: 0.62rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  background: var(--rarity-uncommon); color: #fff;
+  padding: 0.2rem 0.55rem; border-radius: 999px;
+}
+.species-body { padding: 1rem 1.1rem 1.1rem; }
+.species-name { font-family: var(--font-display); font-weight: 600; font-size: 1.25rem; margin: 0 0 0.1rem; }
+.species-sci { font-size: 0.75rem; font-style: italic; color: var(--ink-soft); margin: 0 0 0.9rem; }
+.species-filmstrip {
+  display: flex; gap: 0.4rem; margin-bottom: 1rem;
+  padding: 0.5rem; background: var(--paper-soft); border-radius: var(--radius-sm);
+}
+.species-filmstrip .frame {
+  flex: 1; aspect-ratio: 1;
+  background: var(--bg-soft);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+}
+.species-filmstrip .frame svg { width: 70%; height: 70%; }
+.species-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin-bottom: 0.9rem; }
+.stat-box { background: var(--paper-soft); border-radius: var(--radius-sm); padding: 0.5rem 0.6rem; }
+.stat-box .k { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); display:block; margin-bottom:0.15rem; }
+.stat-box .v { font-family: var(--font-display); font-weight: 600; font-size: 0.85rem; }
+.species-fact { font-size: 0.82rem; line-height: 1.5; color: var(--ink); margin: 0; }
+
+/* ---------- buttons ---------- */
+.btn {
+  font-family: var(--font-display);
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1.1rem;
+  width: 100%;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform var(--dur-fast) ease;
+}
+.btn:active { transform: scale(0.97); }
+.btn.primary { background: var(--moss); color: #0D1A15; box-shadow: var(--shadow-glow-moss); }
+.btn.ghost { background: transparent; color: var(--mist); border: 1.5px solid rgba(143,182,166,0.35); }
+
+.annotate { font-size: 0.72rem; color: var(--mist-soft); text-align: center; margin-top: -0.4rem; margin-bottom: 1.2rem; }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <div class="topbar">
+    <div class="wordmark">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c3 2 5 5 5 8a5 5 0 0 1-10 0c0-3 2-6 5-8z" fill="#3FA66B"/><rect x="11" y="14" width="2" height="7" rx="1" fill="#6B5339"/></svg>
+      TreeDex
+    </div>
+    <div class="avatar-pill">M</div>
+  </div>
+
+  <!-- Hero level/XP card -->
+  <div class="hero-card card-clip">
+    <div class="hero-top">
+      <span class="hero-level-label">Current Rank</span>
+      <span class="hero-level-label">842 XP</span>
+    </div>
+    <h1 class="hero-level-name">Level <span class="lv-num">4</span> · Sapling Scout</h1>
+    <div class="xp-track"><div class="xp-fill"></div></div>
+    <div class="xp-caption"><span>Sapling Scout</span><span>158 XP to Young Grove</span></div>
+  </div>
+
+  <!-- Dex progress journal entry -->
+  <div class="journal-entry">
+    <div class="stamp-rail gold"></div>
+    <div class="entry-body">
+      <div class="entry-icon">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v6l-7 4-7-4V7l7-4z" stroke="#FFB627" stroke-width="1.6" fill="rgba(255,182,39,0.12)"/></svg>
+      </div>
+      <div class="entry-text">
+        <p class="entry-title">Dex Progress</p>
+        <p class="entry-sub">13 of 28 species caught</p>
+        <div class="dex-mini-track"><div class="dex-mini-fill"></div></div>
+      </div>
+      <svg class="entry-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+
+  <!-- Quest journal entry -->
+  <div class="journal-entry">
+    <div class="stamp-rail moss"></div>
+    <div class="entry-body">
+      <div class="entry-icon">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#3FA66B" stroke-width="1.6" fill="rgba(63,166,107,0.12)"/><path d="M12 8v4l3 2" stroke="#3FA66B" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </div>
+      <div class="entry-text">
+        <p class="entry-title">Today's Quest</p>
+        <p class="entry-sub">Find a tree with needles, not leaves</p>
+      </div>
+      <svg class="entry-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </div>
+  </div>
+
+  <!-- Recent badge callout -->
+  <div class="badge-callout">
+    <svg class="medal" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" fill="#FFB627"/><path d="M9 14l-2 7 5-3 5 3-2-7" fill="#D99713"/></svg>
+    <p><span class="label">New Badge</span>Oak Whisperer — caught 3 oak species</p>
+  </div>
+
+  <!-- Primary nav tiles -->
+  <div class="tile-row">
+    <div class="tile primary">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke="#0D1A15" stroke-width="1.8"/><path d="M8 7l2-3h4l2 3" stroke="#0D1A15" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="13.5" r="3.2" stroke="#0D1A15" stroke-width="1.8"/></svg>
+      <span class="tile-label">Catch</span>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="7" height="7" rx="1.5" stroke="#CFEBDD" stroke-width="1.6"/><rect x="14" y="4" width="7" height="7" rx="1.5" stroke="#CFEBDD" stroke-width="1.6"/><rect x="3" y="13" width="7" height="7" rx="1.5" stroke="#CFEBDD" stroke-width="1.6"/><rect x="14" y="13" width="7" height="7" rx="1.5" stroke="#FFB627" stroke-width="1.6"/></svg>
+      <span class="tile-label">Dex</span>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="#CFEBDD" stroke-width="1.6"/><path d="M9 14l-2 7 5-3 5 3-2-7" stroke="#CFEBDD" stroke-width="1.6"/></svg>
+      <span class="tile-label">Badges</span>
+    </div>
+  </div>
+
+  <div class="section-label"><span class="dot"></span>Chicago Northside</div>
+  <div class="dex-grid">
+    <div class="dex-cell caught"><div class="rarity-ring" style="--r:#8FB6A6"></div><svg viewBox="0 0 24 24"><path d="M12 2c-5 4-8 8-8 12a8 8 0 0016 0c0-4-3-8-8-12z" fill="#3FA66B"/></svg></div>
+    <div class="dex-cell caught"><div class="rarity-ring" style="--r:#4D9FE8"></div><svg viewBox="0 0 24 24"><path d="M12 2c-5 4-8 8-8 12a8 8 0 0016 0c0-4-3-8-8-12z" fill="#4D9FE8"/></svg></div>
+    <div class="dex-cell caught"><div class="rarity-ring" style="--r:#8FB6A6"></div><svg viewBox="0 0 24 24"><path d="M12 2c-5 4-8 8-8 12a8 8 0 0016 0c0-4-3-8-8-12z" fill="#D99713"/></svg></div>
+    <div class="dex-cell locked"><svg viewBox="0 0 24 24"><path d="M12 2c-5 4-8 8-8 12a8 8 0 0016 0c0-4-3-8-8-12z" fill="#8FB6A6"/></svg></div>
+    <div class="dex-cell locked"><svg viewBox="0 0 24 24"><path d="M12 2c-5 4-8 8-8 12a8 8 0 0016 0c0-4-3-8-8-12z" fill="#8FB6A6"/></svg></div>
+    <div class="dex-cell caught"><div class="rarity-ring" style="--r:#B06FE0"></div><svg viewBox="0 0 24 24"><path d="M12 2c-5 4-8 8-8 12a8 8 0 0016 0c0-4-3-8-8-12z" fill="#B06FE0"/></svg></div>
+    <div class="dex-cell locked"><svg viewBox="0 0 24 24"><path d="M12 2c-5 4-8 8-8 12a8 8 0 0016 0c0-4-3-8-8-12z" fill="#8FB6A6"/></svg></div>
+    <div class="dex-cell locked"><svg viewBox="0 0 24 24"><path d="M12 2c-5 4-8 8-8 12a8 8 0 0016 0c0-4-3-8-8-12z" fill="#8FB6A6"/></svg></div>
+  </div>
+
+  <div class="mock-divider">Reveal — card flip, rarity border</div>
+  <div class="reveal-stage">
+    <div class="reveal-card">
+      <div class="face">
+        <div class="reveal-photo">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2c-5 4-8 8-8 12a8 8 0 0016 0c0-4-3-8-8-12z" fill="#B06FE0"/><rect x="11" y="15" width="2" height="7" fill="#F7F3E8" opacity=".5"/></svg>
+        </div>
+        <div class="reveal-info">
+          <span class="reveal-rarity-tag">Rare</span>
+          <p class="reveal-name">Tulip Tree</p>
+          <p class="reveal-sci">Liriodendron tulipifera</p>
+        </div>
+      </div>
+      <div class="reveal-stamp">CAUGHT!</div>
+    </div>
+  </div>
+  <p class="annotate">Flip: rotateY 560ms var(--ease-snap) · front glows rarity color on landing</p>
+
+  <div class="mock-divider">Species Card</div>
+  <div class="species-card">
+    <div class="species-hero">
+      <span class="tag">Uncommon</span>
+    </div>
+    <div class="species-body">
+      <h2 class="species-name">Shagbark Hickory</h2>
+      <p class="species-sci">Carya ovata</p>
+      <div class="species-filmstrip">
+        <div class="frame"><svg viewBox="0 0 24 24"><circle cx="12" cy="18" r="2" fill="#6B5339"/></svg></div>
+        <div class="frame"><svg viewBox="0 0 24 24"><path d="M12 20V10M12 10l-3-3M12 10l3-3" stroke="#3FA66B" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div class="frame"><svg viewBox="0 0 24 24"><path d="M12 20V6" stroke="#3FA66B" stroke-width="2"/><circle cx="12" cy="6" r="4" fill="#3FA66B"/></svg></div>
+        <div class="frame"><svg viewBox="0 0 24 24"><path d="M12 20V4" stroke="#2C7A4D" stroke-width="2"/><circle cx="12" cy="7" r="6" fill="#4D9FE8"/></svg></div>
+        <div class="frame"><svg viewBox="0 0 24 24"><path d="M12 20V3" stroke="#6B5339" stroke-width="2.4"/><circle cx="12" cy="7" r="7.5" fill="#D99713"/></svg></div>
+      </div>
+      <div class="species-stats">
+        <div class="stat-box"><span class="k">Height</span><span class="v">60–90 ft</span></div>
+        <div class="stat-box"><span class="k">Fall Color</span><span class="v">Golden bronze</span></div>
+      </div>
+      <p class="species-fact">Peels off in long shaggy strips when mature — the easiest Chicago-area tree to identify by bark alone, even from a moving car.</p>
+    </div>
+  </div>
+  <button class="btn primary" style="margin-bottom:0.6rem;">Add to Favorites</button>
+  <button class="btn ghost">Back to Dex</button>
+
+</div>
+</body>
+</html>

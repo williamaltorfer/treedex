@@ -1,36 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Jost:wght@400;500;600&display=swap');
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  --bg: #f4efe2;
-  --surface: #ffffff;
-  --surface-alt: #faf6ea;
-  --ink: #26311f;
-  --ink-soft: #66705a;
-  --border: #e1d9c2;
+  --bg: #10231c;
+  --bg-soft: #0c1c16;
+  --surface: #17352a;
+  --surface-2: #1f4536;
+  --paper: #f7f3e8;
+  --paper-soft: #efe8d6;
+  --ink: #0d1a15;
+  --ink-soft: #4a5e52;
+  --mist: #cfebdd;
+  --mist-soft: #8fb6a6;
 
-  --primary: #2f7a42;
-  --primary-dark: #215c31;
-  --primary-tint: #e6f0e2;
+  --moss: #3fa66b;
+  --moss-dark: #2c7a4d;
+  --moss-tint: #1e3a2c;
+  --sunflare: #ffb627;
+  --sunflare-dark: #d99713;
+  --berry: #e8553f;
+  --berry-dark: #c23f2b;
+  --bark: #6b5339;
 
-  --accent: #e3a23a;
-  --accent-tint: #fdf2dd;
+  --rarity-common: #8fb6a6;
+  --rarity-uncommon: #4d9fe8;
+  --rarity-rare: #b06fe0;
+  --rarity-legendary: #ffb627;
 
-  --rarity-common: #7e8870;
-  --rarity-uncommon: #3d7dca;
-  --rarity-rare: #9b59b6;
-  --rarity-legendary: #d4a017;
+  /* back-compat aliases used by existing component CSS */
+  --surface-alt: var(--surface);
+  --border: rgba(143, 182, 166, 0.22);
+  --primary: var(--moss);
+  --primary-dark: var(--moss-dark);
+  --primary-tint: var(--moss-tint);
+  --accent: var(--sunflare);
+  --accent-tint: rgba(255, 182, 39, 0.12);
 
-  --radius-sm: 0.6rem;
-  --radius-md: 0.9rem;
-  --radius-lg: 1.4rem;
+  --card-notch: 22px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
 
-  --shadow-sm: 0 1px 3px rgba(38, 49, 31, 0.08);
-  --shadow-md: 0 6px 16px rgba(38, 49, 31, 0.1);
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.45);
+  --shadow-glow-moss: 0 0 0 2px var(--moss), 0 8px 24px rgba(63, 166, 107, 0.35);
+  --shadow-glow-gold: 0 0 0 2px var(--sunflare), 0 8px 24px rgba(255, 182, 39, 0.35);
 
-  --font-display: 'Quicksand', system-ui, sans-serif;
-  --font-body: 'Nunito', system-ui, sans-serif;
+  --font-display: 'Fredoka', system-ui, sans-serif;
+  --font-body: 'Jost', system-ui, sans-serif;
+
+  --ease-snap: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dur-fast: 120ms;
+  --dur-flip: 560ms;
+  --dur-stamp: 420ms;
 
   padding-top: env(safe-area-inset-top, 0px);
   padding-bottom: env(safe-area-inset-bottom, 0px);
@@ -45,10 +68,10 @@ body {
   min-height: 100vh;
   background: var(--bg);
   background-image:
-    radial-gradient(circle at 10% 15%, var(--primary-tint) 0%, transparent 45%),
-    radial-gradient(circle at 90% 85%, var(--accent-tint) 0%, transparent 40%);
+    radial-gradient(circle at 15% 0%, rgba(63, 166, 107, 0.1) 0%, transparent 45%),
+    radial-gradient(circle at 90% 20%, rgba(255, 182, 39, 0.07) 0%, transparent 40%);
   background-attachment: fixed;
-  color: var(--ink);
+  color: var(--mist);
   font-family: var(--font-body);
 }
 
@@ -58,7 +81,8 @@ body {
   padding: 1.25rem 1rem 2.5rem;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: var(--font-display);
 }
 
@@ -78,4 +102,9 @@ img {
 
 [hidden] {
   display: none !important;
+}
+
+/* signature element: clipped notch corner used across cards and tiles */
+.card-clip {
+  clip-path: polygon(0 0, calc(100% - var(--card-notch)) 0, 100% var(--card-notch), 100% 100%, 0 100%);
 }

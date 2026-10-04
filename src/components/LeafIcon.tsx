@@ -37,17 +37,17 @@ const PATHS: Record<LeafShape, string> = {
 }
 
 export const RARITY_FILL: Record<Rarity, string> = {
-  common: '#5c8a63',
-  uncommon: '#2f6fb0',
-  rare: '#8e44ad',
-  legendary: '#c3900a',
+  common: '#8fb6a6',
+  uncommon: '#4d9fe8',
+  rare: '#b06fe0',
+  legendary: '#ffb627',
 }
 
 const RARITY_BADGE_BG: Record<Rarity, string> = {
-  common: '#dcebdd',
-  uncommon: '#d6e6f7',
-  rare: '#ecddf3',
-  legendary: '#f8ecc9',
+  common: '#1f4536',
+  uncommon: '#1a3348',
+  rare: '#2e2246',
+  legendary: '#3a2c14',
 }
 
 export function LeafIcon({
@@ -61,8 +61,8 @@ export function LeafIcon({
   caught?: boolean
   rarity?: Rarity
 }) {
-  const color = caught && rarity ? RARITY_FILL[rarity] : '#4a8a52'
-  const badgeBg = caught && rarity ? RARITY_BADGE_BG[rarity] : '#e9e5d8'
+  const color = caught && rarity ? RARITY_FILL[rarity] : '#3fa66b'
+  const badgeBg = caught && rarity ? RARITY_BADGE_BG[rarity] : '#0c1c16'
 
   return (
     <svg
@@ -72,13 +72,14 @@ export function LeafIcon({
       role="img"
       aria-label={caught ? shape.replace(/-/g, ' ') : 'unidentified tree'}
     >
-      <circle cx="32" cy="32" r="31" fill={caught ? badgeBg : '#e2ddcc'} />
+      <circle cx="32" cy="32" r="31" fill={caught ? badgeBg : '#17352a'} stroke={caught ? color : 'rgba(143,182,166,0.25)'} strokeWidth={caught ? 1.5 : 1.5} strokeDasharray={caught ? undefined : '3 3'} />
       <path
         d={caught ? PATHS[shape] : PATHS.unknown}
-        fill={caught ? color : '#b8b2a0'}
-        fillOpacity={caught ? 1 : 0.6}
-        stroke={caught ? color : '#9b9583'}
-        strokeWidth="2"
+        fill={caught ? color : 'transparent'}
+        fillOpacity={caught ? 0.18 : 0}
+        stroke={caught ? color : '#8fb6a6'}
+        strokeOpacity={caught ? 1 : 0.4}
+        strokeWidth="1.8"
         strokeLinejoin="round"
         strokeLinecap="round"
       />

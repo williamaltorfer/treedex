@@ -8,6 +8,7 @@ import { treeForm } from '../treeForm'
 import { foliageColor } from '../foliageColor'
 import { LEVELS } from '../levels'
 import { fetchSpeciesPhoto, type WikiPhoto } from '../wikipedia'
+import { BackArrowIcon } from '../components/icons'
 
 const GROWTH_STAGES = [0, 1, 2, 3, 4] as const
 
@@ -49,7 +50,7 @@ export function SpeciesCard({
     return (
       <main>
         <button className="back-btn" onClick={onBack}>
-          ← Back
+          <BackArrowIcon /> Back
         </button>
 
         <LeafIcon shape={species.leafShape} size={64} caught={false} />
@@ -63,7 +64,7 @@ export function SpeciesCard({
   return (
     <main>
       <button className="back-btn" onClick={onBack}>
-        ← Back
+        <BackArrowIcon /> Back
       </button>
 
       {cardPhotoUrl ? (

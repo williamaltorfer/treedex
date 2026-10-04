@@ -1,4 +1,5 @@
 import { resetAllData } from '../db'
+import { BackArrowIcon } from '../components/icons'
 
 export function Settings({
   onExport,
@@ -18,7 +19,7 @@ export function Settings({
   return (
     <main>
       <button className="back-btn" onClick={onBack}>
-        ← Back
+        <BackArrowIcon /> Back
       </button>
       <h1>Settings</h1>
 
