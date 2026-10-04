@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import type { Species } from '../data/species'
-import { LeafIcon } from '../components/LeafIcon'
 import { ReadAloudButton } from '../components/ReadAloudButton'
 
 export function Reveal({
@@ -28,15 +27,14 @@ export function Reveal({
       <div className={flipped ? 'reveal-card flipped' : 'reveal-card'}>
         <div className={`reveal-card-inner rarity-${species.rarity}`}>
           <img className="reveal-photo" src={photoUrl} alt={species.commonName} />
-          <div className="reveal-icon">
-            <LeafIcon shape={species.leafShape} size={40} rarity={species.rarity} />
+          <div className="reveal-info">
+            <span className={`rarity-badge rarity-${species.rarity}`}>{species.rarity}</span>
+            <h2 className="reveal-name">{species.commonName}</h2>
+            <p className="scientific-name">{species.scientificName}</p>
           </div>
         </div>
+        <div className="reveal-stamp">CAUGHT!</div>
       </div>
-
-      <h2>{species.commonName}</h2>
-      <p className="scientific-name">{species.scientificName}</p>
-      <span className={`rarity-badge rarity-${species.rarity}`}>{species.rarity}</span>
 
       <p className="fun-fact">
         {species.funFacts[0]} <ReadAloudButton text={`${species.commonName}. ${species.funFacts[0]}`} />

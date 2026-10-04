@@ -67,17 +67,53 @@ export function SpeciesCard({
         <BackArrowIcon /> Back
       </button>
 
-      {cardPhotoUrl ? (
-        <img className="reveal-photo" src={cardPhotoUrl} alt={species.commonName} />
-      ) : (
-        <LeafIcon shape={species.leafShape} size={64} rarity={species.rarity} />
-      )}
+      <div className={`species-card-frame rarity-${species.rarity}`}>
+        <div className="species-hero">
+          {cardPhotoUrl ? (
+            <img className="species-hero-photo" src={cardPhotoUrl} alt={species.commonName} />
+          ) : (
+            <LeafIcon shape={species.leafShape} size={64} rarity={species.rarity} />
+          )}
+          <span className={`rarity-badge rarity-${species.rarity} species-hero-tag`}>{species.rarity}</span>
+        </div>
 
-      <h1>
-        {species.commonName} <ReadAloudButton text={`${species.commonName}. ${species.funFacts.join(' ')}`} />
-      </h1>
-      <p className="scientific-name">{species.scientificName}</p>
-      <span className={`rarity-badge rarity-${species.rarity}`}>{species.rarity}</span>
+        <div className="species-body">
+          <h1 className="species-name">
+            {species.commonName} <ReadAloudButton text={`${species.commonName}. ${species.funFacts.join(' ')}`} />
+          </h1>
+          <p className="species-sci">{species.scientificName}</p>
+
+          <div className="species-filmstrip">
+            {GROWTH_STAGES.map((stage) => (
+              <div key={stage} className="frame">
+                <TreeIllustration stage={stage} form={treeForm(species.id)} color={canopyColor} size={36} />
+                <span>{LEVELS[stage].name}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="species-stats-grid">
+            <div className="stat-box">
+              <span className="k">Region</span>
+              <span className="v">{species.region}</span>
+            </div>
+            <div className="stat-box">
+              <span className="k">Size</span>
+              <span className="v">{species.size}</span>
+            </div>
+            <div className="stat-box">
+              <span className="k">Fall Color</span>
+              <span className="v">{species.fallColor}</span>
+            </div>
+            <div className="stat-box">
+              <span className="k">Native</span>
+              <span className="v">{species.native ? 'Yes' : 'No — planted'}</span>
+            </div>
+          </div>
+
+          <p className="species-fact">{species.funFacts[0]}</p>
+        </div>
+      </div>
 
       <section className="growth-section">
         <h2>The full tree</h2>
@@ -95,24 +131,6 @@ export function SpeciesCard({
         <div className="tree-hero">
           <TreeIllustration stage={4} form={treeForm(species.id)} color={canopyColor} size={120} />
         </div>
-        <div className="growth-strip">
-          {GROWTH_STAGES.map((stage) => (
-            <div key={stage} className="growth-stage">
-              <TreeIllustration stage={stage} form={treeForm(species.id)} color={canopyColor} size={44} />
-              <span>{LEVELS[stage].name}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section>
-        <h2>Stats</h2>
-        <ul className="stats-list">
-          <li>Region: {species.region}</li>
-          <li>Native: {species.native ? 'Yes' : 'No — planted'}</li>
-          <li>Size: {species.size}</li>
-          <li>Fall color: {species.fallColor}</li>
-        </ul>
       </section>
 
       <section>

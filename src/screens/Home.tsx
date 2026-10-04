@@ -1,8 +1,9 @@
-import type { Species } from '../data/species'
+import type { Region, Species } from '../data/species'
 import type { Catch, Profile } from '../types'
 import { computeBadges, mostRecentBadge, totalPoints } from '../badges'
-import { levelProgress } from '../levels'
+import { LEVELS, levelProgress } from '../levels'
 import { weeklyQuest } from '../quests'
+import { LeafIcon } from '../components/LeafIcon'
 import {
   AvatarIcon,
   BookIcon,
@@ -10,10 +11,13 @@ import {
   ChevronRightIcon,
   CompassIcon,
   GearIcon,
-  LevelBadgeIcon,
   MedalIcon,
   SignalIcon,
 } from '../components/icons'
+
+/** Region shown in the Home screen's mini Dex preview — first region in the catalog's natural order. */
+const PREVIEW_REGION: Region = 'Maples'
+const PREVIEW_LIMIT = 8
 
 export function Home({
   catalog,
@@ -36,14 +40,18 @@ export function Home({
   onProfiles: () => void
   onSettings: () => void
 }) {
-  const caughtCount = new Set(catches.filter((c) => c.speciesId).map((c) => c.speciesId)).size
+  const caughtIds = new Set(catches.filter((c) => c.speciesId).map((c) => c.speciesId))
+  const caughtCount = caughtIds.size
   const dexPct = catalog.length > 0 ? Math.round((caughtCount / catalog.length) * 100) : 0
   const points = totalPoints(activeProfileCatches, catalog)
   const progress = levelProgress(points)
+  const levelNumber = LEVELS.findIndex((l) => l.name === progress.level.name) + 1
   const badges = computeBadges(activeProfileCatches, catalog)
   const recentBadge = mostRecentBadge(badges)
   const earnedBadgeCount = badges.filter((b) => b.earned).length
   const queuedCount = catches.filter((c) => c.pendingIdentification).length
+
+  const previewSpecies = catalog.filter((s) => s.region === PREVIEW_REGION).slice(0, PREVIEW_LIMIT)
 
   return (
     <main>
@@ -66,15 +74,13 @@ export function Home({
       <h1>TreeDex</h1>
 
       <section className="level-card card-clip">
-        <div className="level-top">
-          <span className="level-emoji">
-            <LevelBadgeIcon levelName={progress.level.name} />
-          </span>
-          <div>
-            <div className="level-name">{progress.level.name}</div>
-            <div className="level-points">{points} XP</div>
-          </div>
+        <div className="level-top-row">
+          <span className="level-eyebrow">Current Rank</span>
+          <span className="level-eyebrow level-xp">{points} XP</span>
         </div>
+        <h2 className="level-heading">
+          Level <span className="level-num">{levelNumber}</span> · {progress.level.name}
+        </h2>
         <div className="progress-track">
           <div className="progress-fill" style={{ width: `${progress.progressPct}%` }} />
         </div>
@@ -85,17 +91,37 @@ export function Home({
         </div>
       </section>
 
-      <section className="dex-stat-card">
-        <div className="dex-stat-row">
-          <span>
-            {caughtCount} of {catalog.length} Chicago trees caught
-          </span>
-          <span className="dex-stat-pct">{dexPct}%</span>
+      <button className="journal-entry" onClick={onDex}>
+        <div className="stamp-rail gold" />
+        <div className="entry-body">
+          <div className="entry-icon">
+            <BookIcon size={24} />
+          </div>
+          <div className="entry-text">
+            <p className="entry-title">Dex Progress</p>
+            <p className="entry-sub">
+              {caughtCount} of {catalog.length} Chicago trees caught
+            </p>
+            <div className="dex-mini-track">
+              <div className="dex-mini-fill" style={{ width: `${dexPct}%` }} />
+            </div>
+          </div>
+          <ChevronRightIcon className="entry-chevron" />
         </div>
-        <div className="progress-track">
-          <div className="progress-fill dex-fill" style={{ width: `${dexPct}%` }} />
+      </button>
+
+      <div className="journal-entry journal-entry-static">
+        <div className="stamp-rail moss" />
+        <div className="entry-body">
+          <div className="entry-icon">
+            <CompassIcon size={24} />
+          </div>
+          <div className="entry-text">
+            <p className="entry-title">Today's Quest</p>
+            <p className="entry-sub">{weeklyQuest()}</p>
+          </div>
         </div>
-      </section>
+      </div>
 
       {recentBadge && (
         <button className="recent-badge" onClick={onBadges}>
@@ -117,48 +143,39 @@ export function Home({
         </p>
       )}
 
-      <p className="quest-banner">
-        <CompassIcon />
-        This week's quest: {weeklyQuest()}
-      </p>
-
-      <button className="catch-btn card-clip" onClick={onCatch}>
-        <span className="catch-btn-icon">
-          <CameraIcon />
-        </span>
-        <span className="catch-btn-text">
-          <strong>Catch a Tree</strong>
-          <span>Point, snap, and see what you find</span>
-        </span>
-      </button>
-
-      <div className="menu-tiles">
-        <button className="menu-tile" onClick={onDex}>
-          <span className="menu-tile-icon dex-icon">
-            <BookIcon />
-          </span>
-          <span className="menu-tile-text">
-            <strong>Open TreeDex</strong>
-            <span>
-              {caughtCount} of {catalog.length} trees found
-            </span>
-          </span>
-          <ChevronRightIcon className="menu-tile-arrow" />
+      <div className="tile-row">
+        <button className="tile primary" onClick={onCatch}>
+          <CameraIcon size={32} />
+          <span className="tile-label">Catch</span>
         </button>
-
-        <button className="menu-tile" onClick={onBadges}>
-          <span className="menu-tile-icon badge-icon">
-            <MedalIcon />
-          </span>
-          <span className="menu-tile-text">
-            <strong>Badge Shelf</strong>
-            <span>
-              {earnedBadgeCount} of {badges.length} badges earned
-            </span>
-          </span>
-          <ChevronRightIcon className="menu-tile-arrow" />
+        <button className="tile" onClick={onDex}>
+          <BookIcon size={32} />
+          <span className="tile-label">Dex</span>
+        </button>
+        <button className="tile" onClick={onBadges}>
+          <MedalIcon size={32} />
+          <span className="tile-label">Badges</span>
         </button>
       </div>
+      <p className="tile-row-caption">
+        {earnedBadgeCount} of {badges.length} badges earned
+      </p>
+
+      {previewSpecies.length > 0 && (
+        <button className="home-dex-preview-link" onClick={onDex}>
+          <span className="section-label">
+            <span className="dot" />
+            {PREVIEW_REGION}
+          </span>
+          <div className="home-dex-grid">
+            {previewSpecies.map((s) => (
+              <span key={s.id} className="home-dex-cell">
+                <LeafIcon shape={s.leafShape} size={26} caught={caughtIds.has(s.id)} rarity={s.rarity} />
+              </span>
+            ))}
+          </div>
+        </button>
+      )}
     </main>
   )
 }

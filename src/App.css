@@ -248,41 +248,34 @@ h2 {
   clip-path: polygon(100% 0, 0 0, 100% 100%);
 }
 
-.level-top {
+.level-top-row {
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.8rem;
+  align-items: baseline;
+  justify-content: space-between;
 }
 
-.level-emoji {
-  width: 2.4rem;
-  height: 2.4rem;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--moss-tint);
-  border-radius: 999px;
-  color: var(--sunflare);
-}
-
-.level-emoji svg {
-  width: 22px;
-  height: 22px;
-}
-
-.level-name {
-  font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 1.15rem;
-  color: var(--mist);
-}
-
-.level-points {
-  font-size: 0.8rem;
+.level-eyebrow {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--mist-soft);
   font-weight: 500;
+}
+
+.level-xp {
+  color: var(--mist-soft);
+}
+
+.level-heading {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--mist);
+  margin: 0.15rem 0 0.7rem;
+}
+
+.level-num {
+  color: var(--sunflare);
 }
 
 .progress-track {
@@ -310,28 +303,93 @@ h2 {
   color: var(--mist-soft);
 }
 
-/* Dex progress card */
+/* Journal entries (Dex Progress / Today's Quest) with colored stamp rail */
 
-.dex-stat-card {
+.journal-entry {
+  display: flex;
+  width: 100%;
   background: var(--surface);
   border-radius: var(--radius-md);
-  padding: 0.9rem 1rem;
   box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  border: none;
+  padding: 0;
+  text-align: left;
 }
 
-.dex-stat-row {
+.journal-entry-static {
+  cursor: default;
+}
+
+.stamp-rail {
+  width: 6px;
+  flex-shrink: 0;
+}
+
+.stamp-rail.gold {
+  background: var(--sunflare);
+}
+
+.stamp-rail.moss {
+  background: var(--moss);
+}
+
+.entry-body {
+  flex: 1;
+  padding: 0.85rem 1rem;
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--mist);
+  align-items: center;
+  gap: 0.8rem;
 }
 
-.dex-stat-pct {
+.entry-icon {
+  width: 2.4rem;
+  height: 2.4rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--moss-tint);
+  border-radius: 999px;
   color: var(--sunflare);
+}
+
+.entry-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.entry-title {
   font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--mist);
+  margin: 0 0 0.15rem;
+}
+
+.entry-sub {
+  font-size: 0.78rem;
+  color: var(--mist-soft);
+  margin: 0;
+}
+
+.entry-chevron {
+  color: var(--mist-soft);
+  flex-shrink: 0;
+}
+
+.dex-mini-track {
+  height: 5px;
+  background: var(--bg-soft);
+  border-radius: 999px;
+  margin-top: 0.4rem;
+  overflow: hidden;
+}
+
+.dex-mini-fill {
+  height: 100%;
+  background: var(--sunflare);
+  border-radius: 999px;
 }
 
 /* Recent badge callout */
@@ -391,148 +449,98 @@ h2 {
   }
 }
 
-.quest-banner {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  background: rgba(255, 182, 39, 0.1);
-  border: 1px solid rgba(255, 182, 39, 0.3);
-  border-radius: var(--radius-md);
-  padding: 0.85rem 1rem;
-  margin: 0;
-  font-size: 0.88rem;
-  color: var(--mist);
-}
+/* Primary nav tiles: Catch / Dex / Badges, 3-across */
 
-.quest-banner svg {
-  flex-shrink: 0;
-  width: 20px;
-  height: 20px;
-  color: var(--sunflare);
-}
-
-.catch-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1.25rem 1.4rem;
-  border: none;
-  border-radius: var(--radius-lg);
-  background: linear-gradient(160deg, var(--moss), var(--moss-dark));
-  color: var(--ink);
-  box-shadow: var(--shadow-glow-moss);
-  text-align: left;
-  min-height: 4rem;
-}
-
-.catch-btn.card-clip {
-  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%);
-}
-
-.catch-btn-icon {
-  background: rgba(13, 26, 21, 0.18);
-  border-radius: 999px;
-  width: 3.2rem;
-  height: 3.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.catch-btn-icon svg {
-  width: 28px;
-  height: 28px;
-}
-
-.catch-btn-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-}
-
-.catch-btn-text strong {
-  font-family: var(--font-display);
-  font-size: 1.2rem;
-}
-
-.catch-btn-text span {
-  font-size: 0.8rem;
-  opacity: 0.85;
-  font-weight: 400;
-}
-
-/* Menu tiles (Dex, Badges) */
-
-.menu-tiles {
-  display: flex;
-  flex-direction: column;
+.tile-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 0.6rem;
 }
 
-.menu-tile {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-md);
+.tile {
   background: var(--surface);
-  box-shadow: var(--shadow-sm);
-  text-align: left;
-  min-height: 3.6rem;
-}
-
-.menu-tile-icon {
-  width: 2.6rem;
-  height: 2.6rem;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.menu-tile-icon svg {
-  width: 22px;
-  height: 22px;
-}
-
-.menu-tile-icon.dex-icon {
-  background: var(--moss-tint);
-  color: var(--moss);
-}
-
-.menu-tile-icon.badge-icon {
-  background: rgba(255, 182, 39, 0.14);
-  color: var(--sunflare);
-}
-
-.menu-tile-text {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 1rem 0.5rem 0.8rem;
   display: flex;
   flex-direction: column;
-  gap: 0.1rem;
-  flex: 1;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  min-height: 5.5rem;
 }
 
-.menu-tile-text strong {
+.tile.primary {
+  background: linear-gradient(160deg, var(--moss-dark), var(--moss));
+  box-shadow: var(--shadow-glow-moss);
+  color: var(--ink);
+}
+
+.tile:active {
+  transform: scale(0.96);
+}
+
+.tile-label {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-weight: 600;
+  font-size: 0.82rem;
   color: var(--mist);
 }
 
-.menu-tile-text span {
+.tile.primary .tile-label {
+  color: var(--ink);
+}
+
+.tile-row-caption {
+  margin: -0.3rem 0 0;
   font-size: 0.78rem;
   color: var(--mist-soft);
+  text-align: center;
 }
 
-.menu-tile-arrow {
-  color: var(--mist-soft);
-  flex-shrink: 0;
-  width: 16px;
-  height: 16px;
+/* Section label + mini Dex preview on Home */
+
+.section-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--mist);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.section-label .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--sunflare);
+}
+
+.home-dex-preview-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+  text-align: left;
+}
+
+.home-dex-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+}
+
+.home-dex-cell {
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .backup-row {
@@ -591,15 +599,16 @@ h2 {
 /* Reveal */
 
 .reveal-card {
+  position: relative;
   perspective: 1200px;
 }
 
 .reveal-card-inner {
   position: relative;
   border-radius: var(--radius-lg);
-  padding: 0.75rem;
-  text-align: center;
+  text-align: left;
   background: var(--paper);
+  overflow: hidden;
   transition: transform var(--dur-flip) var(--ease-snap), opacity 0.3s;
   transform: rotateY(90deg) scale(0.9);
   opacity: 0;
@@ -629,18 +638,46 @@ h2 {
 
 .reveal-photo {
   width: 100%;
-  border-radius: var(--radius-md);
   display: block;
 }
 
-.reveal-icon {
+.reveal-info {
+  padding: 0.9rem 1rem 1.1rem;
+}
+
+.reveal-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--ink);
+  margin: 0.4rem 0 0.1rem;
+}
+
+.reveal-card-inner .scientific-name {
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.reveal-stamp {
   position: absolute;
-  bottom: -0.6rem;
-  right: -0.6rem;
-  background: var(--paper);
-  border-radius: 50%;
-  padding: 0.3rem;
-  box-shadow: var(--shadow-md);
+  bottom: 14px;
+  right: -10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--berry);
+  border: 3px solid var(--berry);
+  padding: 0.1rem 0.5rem;
+  border-radius: 8px;
+  transform: rotate(-10deg);
+  background: rgba(247, 243, 232, 0.9);
+  letter-spacing: 0.04em;
+  opacity: 0;
+  transition: opacity 0.3s 0.4s;
+}
+
+.reveal-card.flipped .reveal-stamp {
+  opacity: 1;
 }
 
 .scientific-name {
@@ -743,6 +780,132 @@ h2 {
   font-size: 0.8rem;
   color: var(--mist-soft);
   font-style: italic;
+}
+
+/* Species card — unified "trading card" frame matching the Reveal card treatment */
+
+.species-card-frame {
+  background: var(--paper);
+  border-radius: var(--radius-lg);
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 0 100%);
+  box-shadow: var(--shadow-md);
+  color: var(--ink);
+  overflow: hidden;
+  position: relative;
+}
+
+.species-card-frame.rarity-common {
+  border: 3px solid var(--rarity-common);
+}
+.species-card-frame.rarity-uncommon {
+  border: 3px solid var(--rarity-uncommon);
+}
+.species-card-frame.rarity-rare {
+  border: 3px solid var(--rarity-rare);
+}
+.species-card-frame.rarity-legendary {
+  border: 3px solid var(--rarity-legendary);
+  box-shadow: var(--shadow-glow-gold);
+}
+
+.species-hero {
+  height: 150px;
+  background: linear-gradient(160deg, #2f5240, #17352a);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.species-hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.species-hero-tag {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+}
+
+.species-body {
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.species-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.25rem;
+  color: var(--ink);
+  margin: 0 0 0.1rem;
+}
+
+.species-sci {
+  font-size: 0.78rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin: 0 0 0.9rem;
+}
+
+.species-filmstrip {
+  display: flex;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: var(--paper-soft);
+  border-radius: var(--radius-sm);
+}
+
+.species-filmstrip .frame {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  background: var(--bg-soft);
+  border-radius: 8px;
+  padding: 0.35rem 0.2rem;
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--mist-soft);
+  text-align: center;
+}
+
+.species-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.stat-box {
+  background: var(--paper-soft);
+  border-radius: var(--radius-sm);
+  padding: 0.5rem 0.6rem;
+}
+
+.stat-box .k {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--ink-soft);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.stat-box .v {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.species-fact {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--ink);
+  margin: 0;
 }
 
 /* Species card */
