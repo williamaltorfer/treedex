@@ -1,8 +1,8 @@
 export function Mystery({
   photoUrl,
   onDone,
-  title = 'Mystery tree!',
-  message = "We couldn't match this one to the Chicago list yet. It's saved as a mystery tree.",
+  title = 'Not sure yet!',
+  message = "We couldn't confidently identify this one from the photo — it might still be a real tree, just not a clear enough shot for us to be sure. It's saved as a mystery tree.",
 }: {
   photoUrl: string
   onDone: () => void
